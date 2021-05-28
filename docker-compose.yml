@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mongo:
-    container_name: mymongodatabase
+    container_name: mongodatabase
     image: mongo
     ports:
       - "27017:27017"
@@ -11,6 +11,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
   
   mongo-express:
+    container_name: monog-express
     image: mongo-express
     restart: always
     ports:
@@ -20,12 +21,14 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: root
 
   web:
-    container_name: exampleapp
-    restart: always
-    build: .
+    container_name: apiapp
+    # restart: always
+    build: 
+        context: ./api
+        dockerfile: Dockerfile
     ports:
       - "5000:3000"
     links:
       - mongo
     volumes: 
-      - .:/api
+      - ./api:/api

@@ -4,7 +4,7 @@ WORKDIR /api
 
 COPY . /api
 
-RUN npm install
+#RUN npm install
 
 EXPOSE 3000
 
