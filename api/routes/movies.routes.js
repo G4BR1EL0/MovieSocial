@@ -8,8 +8,10 @@ movieRoutes.get("/title", movieController.searchTitle);
 movieRoutes.get("/genre", movieController.searchGenre);
 movieRoutes.get("/actors", movieController.searchActors);
 movieRoutes.get("/director", movieController.searchDirector);
-movieRoutes.post("/seed", movieController.insertSeed);
-movieRoutes.delete("/seed", movieController.deleteSeed);
+movieRoutes.post("/", movieController.create);
+movieRoutes.delete("/", movieController.delete);
+movieRoutes.delete("/all", movieController.deleteAll);
 movieRoutes.get("/id", movieController.searchId);
+movieRoutes.patch("/", movieController.update);
 
 export default movieRoutes;
