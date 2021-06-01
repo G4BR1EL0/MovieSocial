@@ -1,10 +1,12 @@
 import movieRoutes from "./routes/movies.routes.js";
 import userRoutes from "./routes/users.routes.js";
 import loginRoutes from "./routes/login.routes.js";
+import valorationRoutes from "./routes/valoration.routes.js";
 import express  from 'express';
 import connect from './db/mongo.js';
 import dotenv from 'dotenv';
 import singupRoutes from "./routes/singup.routes.js";
+import checkJWT from './middlewares/checkJWT.middleware.js';
 
 connect();
 dotenv.config();
@@ -23,7 +25,8 @@ app.use((req, res, next) => {
 
 app.use('/singup', singupRoutes);
 app.use('/login', loginRoutes);
-app.use('/users', userRoutes);
+app.use('/valoration', valorationRoutes);
+app.use('/users', checkJWT, userRoutes);
 app.use('/movies', movieRoutes);
 
 app.listen(process.env.PUERTO, () => {
