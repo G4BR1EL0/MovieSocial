@@ -7,9 +7,7 @@ import { searchAction } from "../../Store/Actions/searchActions";
 
 export function Header(){
     const dispatch = useDispatch();
-    const setSeaarchCriteria = (criterio) => {
-        dispatch(searchAction(criterio));
-    };
+    
 
     return(
         <div className="container">
