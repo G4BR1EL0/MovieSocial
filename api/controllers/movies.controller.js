@@ -2,7 +2,7 @@ import Movies from '../models/movie.model.js';
 
 export const movieController = {
     list: async (req, res) => {
-        let respuesta = await Movies.find().limit(10);
+        let respuesta = await Movies.find().limit(20);
         res.send(respuesta);
     },
     searchId: async (req, res) => {
