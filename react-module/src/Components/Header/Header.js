@@ -4,17 +4,19 @@ import './Header.scss'
 import { useDispatch } from "react-redux";
 import { searchAction } from "../../Store/Actions/searchActions";
 
-
-export function Header(){
-    const dispatch = useDispatch();
-    
+const Header = () => {    
 
     return(
         <div className="container">
-            <div>LOGO</div>
+            <Link className="navbar-brand" to="./home">
+                <div>LOGO</div>
+            </Link>
+            
             <div>Login</div>
             <div>Register</div>
             <div>Search</div>
         </div>    
     )
 }
+
+export default Header;
