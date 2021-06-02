@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 
 dotenv.config();
-//const urlLocal = process.env.URLLOCAL;
+//const urlLocal = process.env.REDLOCAL;
 const urlLocal = "http://127.0.0.1:5000";
 
 //Object used to connect to local API and to fetch information
@@ -127,6 +127,7 @@ const ApiConsumer = {
         try {
             let response = await fetch(`${urlLocal}/movies/`, { method: 'GET' });
             response = await response.json();
+            console.log(response);
             return response;
         } catch (error) {
             console.log(error);

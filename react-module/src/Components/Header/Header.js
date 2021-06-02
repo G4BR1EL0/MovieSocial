@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './Header.scss'
-import { useDispatch } from "react-redux";
-import { searchAction } from "../../Store/Actions/searchActions";
 
 const Header = () => {    
 
     return(
         <div className="container">
-            <Link className="navbar-brand" to="./home">
+            <Link className="navbar-brand" to="./">
                 <div>LOGO</div>
             </Link>
             

@@ -5,7 +5,6 @@ const apiLogin = (email, password) => {
     return async (dispatch) => {
         try {
             let results = await ApiConsumer.login(email, password);
-            console.log(results)
             if(results){
                 if(results.error){
                     dispatch(loginActionError(results.error)) 
@@ -13,8 +12,9 @@ const apiLogin = (email, password) => {
                 }
                 if(results.token){ 
                     dispatch(loginAction(results.token));
-                    let user = await ApiConsumer.getUser(results.token);
-                    if(user) dispatch(getUserAction(user.respuesta))
+                    // let user = await ApiConsumer.getUser(results.token);
+                    // if(user) dispatch(getUserAction(user.respuesta))
+                    dispatch(getUserAction(results.user));
                 }
                 return;
             }

@@ -18,7 +18,7 @@ const Login = () => {
 
     if (token) {
         console.log("redireccionar home")
-        history.push('/home');
+        history.push('/');
     }
 
     return(

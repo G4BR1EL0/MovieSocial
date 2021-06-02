@@ -1,9 +1,6 @@
 import React from "react";
-import MovieCarousel from "../../Components/MovieCarousel/MovieCarousel";
 
-
-
-const HomePage = () => {
+const Valoration = () => {
 
     return(
         <div>
@@ -11,11 +8,10 @@ const HomePage = () => {
             peliculas más valoradas
             valoraciones más votadas
             acceso perfil
-            <MovieCarousel/>
-
+            
         </div>
            
     )
 }
 
-export default HomePage;
+export default Valoration;
