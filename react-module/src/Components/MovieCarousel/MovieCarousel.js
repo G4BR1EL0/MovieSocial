@@ -28,47 +28,59 @@ const MovieCarousel = (props) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3 
+      items: 12,
+      slidesToSlide: 1 
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-      slidesToSlide: 2 
+      breakpoint: { max: 1024, min: 950 },
+      items: 9,
+      slidesToSlide: 1 
+    },
+    tabletMedium: {
+      breakpoint: { max: 950, min: 750 },
+      items: 8,
+      slidesToSlide: 1 
+    },
+    tabletMediums: {
+      breakpoint: { max: 750, min: 650 },
+      items: 6,
+      slidesToSlide: 1 
+    },
+    tabletSmall: {
+      breakpoint: { max: 650, min: 464 },
+      items: 4,
+      slidesToSlide: 1 
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 1,
+      items: 3,
       slidesToSlide: 1 
     }
   }
     return(
       
       <Carousel
-        swipeable={false}
-        draggable={false}
-        showDots={true}
+        swipeable={true}
+        draggable={true}
+        showDots={false}
         responsive={responsive}
-        ssr={true} // means to render carousel on server-side.
         infinite={true}
         autoPlay={true}
         autoPlaySpeed={2000}
-        keyBoardControl={true}
-        customTransition="all .5"
-        transitionDuration={1000}
+        customTransition="transform 300ms ease-in-out"
+        transitionDuration={50}
         containerClass="carousel-container"
         removeArrowOnDeviceType={["tablet", "mobile"]}
-        dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
+        itemClass="boxMF"
       >
         {movies.map((movie, index) => {
             return(
                 <BoxMovie 
                 key={index} 
                 peli={movie} 
-                placeholder={movie.backdrop_path}
+                placeholder={movie.poster_path}
                 funcion={detalles} 
-                ruta = {`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}/>
+                ruta = {`https://image.tmdb.org/t/p/original/${movie.poster_path}`}/>
             )
         })}
       </Carousel>
