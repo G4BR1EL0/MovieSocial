@@ -18,7 +18,6 @@ const ValorationCarousel = (props) => {
             let result= await ApiConsumer.getValoration();
             console.log(result.respuesta);
             if(result.respuesta.length>0){
-                console.log(result+"sfsldjnousdbn");
                 setValorations(result.respuesta);
                 setPintar(true);
             }
