@@ -6,8 +6,10 @@ const Seeder = () => {
     const borrar = async () => {       
         let response1 = await ApiConsumer.deleteSeed();
         let response2 = await ApiConsumer.deleteUsers(); 
-        let response3 = await ApiConsumer.deleteValoration(); 
+        let response3 = await ApiConsumer.deleteValorations(); 
         console.log(response1);
+        console.log(response2);
+        console.log(response3);
     }
     
     const insertarSeed = async () =>{
@@ -89,7 +91,8 @@ const Seeder = () => {
         try{
             let response1 = await ApiConsumer.register("user", "user@mail.com", "user");
             let response2 = await ApiConsumer.register("admin", "admin@mail.com", "admin", true);
-            console.log(response1, response2);
+            console.log(response1);
+            console.log(response2);
         }
         catch(e){
             console.log(e);
@@ -98,13 +101,13 @@ const Seeder = () => {
     
     const insertarValoraciones = async () => {
         try{
-   
             let movies = await ApiConsumer.getMovies();
             let user = await ApiConsumer.login("user@mail.com", "user");
+            console.log(user)
             movies.forEach(async (movie, index) => {
                 let valoration = {};
                 valoration.movie = movie._id;
-                valoration.user = user._id;
+                valoration.user = user.user._id;
                 valoration.comment = `valoration number ${index}`;
                 valoration.stars = 4;
                 let response = await ApiConsumer.insertValoration(valoration);

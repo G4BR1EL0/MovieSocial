@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 app.use('/singup', singupRoutes);
 app.use('/login', loginRoutes);
 app.use('/valoration', valorationRoutes);
-app.use('/users', checkJWT, userRoutes);
+app.use('/user', userRoutes); 
 app.use('/movies', movieRoutes);
 
 app.listen(process.env.PUERTO, () => {

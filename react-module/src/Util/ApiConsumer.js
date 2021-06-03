@@ -41,7 +41,7 @@ const ApiConsumer = {
     },
     getUser : async (token) => {
         try {
-            let response = await fetch(`${urlLocal}/users`, 
+            let response = await fetch(`${urlLocal}/user`, 
             { method: 'GET',             
                 headers:{
                     'token': token
@@ -53,10 +53,18 @@ const ApiConsumer = {
             console.log(error);
         }
     },
-    deleteUsers : async (id) => {
+    deleteValorations : async () => {
         try {
-            let response = await fetch(`${urlLocal}/users/all`, 
-            { method: 'DELETE'});
+            let response = await fetch(`${urlLocal}/valoration/all`, { method: 'DELETE' });
+            response = await response.json();
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    deleteUsers : async () => {
+        try {
+            let response = await fetch(`${urlLocal}/user/all`, { method: 'DELETE'});
             response = await response.json();
             return response;
         } catch (error) {

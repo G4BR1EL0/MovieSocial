@@ -5,8 +5,7 @@ dotenv.config();
 
 export const valorationController = {
     list: async (req,res) => {
-        const user = jwt.decode(req.headers.token);
-        let respuesta = await Valoration.findById(user.respuesta._id).lean();
+        let respuesta = await Valoration.find().populate('user').populate('movie');
         res.json({respuesta});
     },
     create: async (req,res) => {
@@ -23,6 +22,10 @@ export const valorationController = {
     //solo admin
     delete: async (req,res) => {
         let respuesta = await Valoration.findByIdAndDelete(req.params.id);
+        res.send(respuesta);
+    },
+    deleteAll: async (req,res) => {
+        let respuesta = await Valoration.remove({});
         res.send(respuesta);
     },
     update: async (req,res) => {

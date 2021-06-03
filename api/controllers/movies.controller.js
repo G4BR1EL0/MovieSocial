@@ -26,8 +26,8 @@ export const movieController = {
         res.send(respuesta);
     },
     create: async (req, res) => {
-        let respuesta2 = await Movies.create(req.body);
-        res.send(respuesta2);
+        let respuesta = await Movies.create(req.body);
+        res.send(respuesta);
     },
     delete: async (req, res) => {
         let respuesta = await Movies.findByIdAndDelete(req.headers.id)   

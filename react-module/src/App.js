@@ -6,7 +6,7 @@ import LoginPage from './Containers/LoginPage/LoginPage.js';
 import RegisterPage from './Containers/RegisterPage/RegisterPage.js';
 import SearchPage from './Containers/SearchPage/SearchPage';
 import ProfilePage from './Containers/ProfilePage/ProfilePage';
-import Seeder from './Components/Seeder/Sedder.js';
+import Seeder from './Components/Seeder/Seeder.js';
 
 function App() {
   return (

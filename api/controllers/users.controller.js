@@ -5,8 +5,7 @@ dotenv.config();
 
 export const userController = {
     list: async (req,res) => {
-        const user = jwt.decode(req.headers.token);
-        let respuesta = await User.findById(user.respuesta._id).lean();
+        let respuesta = await User.find();
         res.json({respuesta});
     },
     login: async (req,res) => {
@@ -14,11 +13,12 @@ export const userController = {
             console.log(req.body)
             let respuesta = await User.findOne({$and: [{'email':req.body.email},
                                                     {'password':req.body.password}]}).lean();
+            console.log(respuesta)
             if(respuesta){
                 const payload={respuesta};
                 const secret=process.env.JWT_TOKEN;
                 const token=jwt.sign(payload,secret);        
-                res.json({token});
+                res.json({"token":token,"user":respuesta});
                 return 
             }
             res.json({error:"Datos incorrectos"});
@@ -40,6 +40,10 @@ export const userController = {
     },
     delete: async (req,res) => {
         let respuesta = await User.findByIdAndDelete(req.params.id);
+        res.send(respuesta);
+    },
+    deleteAll: async (req,res) => {
+        let respuesta = await User.remove({});
         res.send(respuesta);
     },
     update: async (req,res) => {
