@@ -7,8 +7,7 @@ const Valoration = () => {
             Home
             peliculas más valoradas
             valoraciones más votadas
-            acceso perfil
-            
+            acceso perfil            
         </div>
            
     )

@@ -6,13 +6,24 @@ const Header = () => {
 
     return(
         <div className="container">
-            <Link className="navbar-brand" to="./">
+            <Link to="./">
                 <div>LOGO</div>
             </Link>
-            
-            <div>Login</div>
-            <div>Register</div>
-            <div>Search</div>
+            <Link to="./login">
+                <div>Login</div>
+            </Link>
+            <Link to="./register">
+                <div>Register</div>
+            </Link>
+            <Link to="./search">
+                <div>Search</div>
+            </Link>
+            <Link to="./profile">
+                <div>Profile</div>
+            </Link>
+            <Link to="./seed">
+                <div>Seed</div>
+            </Link>
         </div>    
     )
 }

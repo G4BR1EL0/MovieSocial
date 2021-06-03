@@ -53,6 +53,16 @@ const ApiConsumer = {
             console.log(error);
         }
     },
+    deleteUsers : async (id) => {
+        try {
+            let response = await fetch(`${urlLocal}/users/all`, 
+            { method: 'DELETE'});
+            response = await response.json();
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
     getMoviesByGenre : async ( genre) => {
         try {
             let response = await fetch(`${urlLocal}/movies/genre`, 
@@ -127,7 +137,75 @@ const ApiConsumer = {
         try {
             let response = await fetch(`${urlLocal}/movies/`, { method: 'GET' });
             response = await response.json();
-            console.log(response);
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    deleteSeed : async () => {
+        try {
+            let response = await fetch(`${urlLocal}/movies/all`, { method: 'DELETE' });
+            response = await response.json();
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    insertMovie : async (movie) => {
+        try {
+            let response = await fetch(`${urlLocal}/movies`, 
+            { method: 'POST', 
+            body: JSON.stringify(movie),
+            headers:{'Content-Type': 'application/json'}
+            });
+            response = await response.json();
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    insertValoration : async (valoration) => {
+        try {
+            let response = await fetch(`${urlLocal}/valoration`, 
+            { method: 'POST', 
+            body: JSON.stringify(valoration),
+            headers:{'Content-Type': 'application/json'}
+            });
+            response = await response.json();
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    updateValoration : async (valoration) => {
+        try {
+            let response = await fetch(`${urlLocal}/valoration`, 
+            { method: 'PATCH', 
+            body: JSON.stringify(valoration),
+            headers:{'Content-Type': 'application/json'}
+            });
+            response = await response.json();
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    getValoration : async () => {
+        try {
+            let response = await fetch(`${urlLocal}/valoration`, { method: 'GET' });
+            response = await response.json();
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    deleteValoration : async (id) => {
+        try {
+            let response = await fetch(`${urlLocal}/valoration`, 
+            { method: 'DELETE',
+             headers: {id:id}
+            });
+            response = await response.json();
             return response;
         } catch (error) {
             console.log(error);
