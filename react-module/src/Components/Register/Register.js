@@ -2,6 +2,7 @@ import React from "react";
 import ApiConsumer from "../../Util/ApiConsumer";
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './Register.scss';
 
 const Register = () => {
@@ -15,6 +16,12 @@ const Register = () => {
         let respuesta = await ApiConsumer.register(name, email, password);
         if (respuesta) history.push('/login');
     }    
+    const token = useSelector(state => state.token.jwt);
+
+    if (token) {
+        console.log("redireccionar home")
+        history.push('/');
+    }
     
     return(
         <div className="register-container">

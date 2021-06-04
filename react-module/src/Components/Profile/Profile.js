@@ -12,6 +12,7 @@ const Profile = (props) => {
     const history = useHistory();
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(name, email, password);
         let respuesta = await ApiConsumer.updateUser(props.user._id, name, email, password);
         console.log(respuesta)
     }    
