@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import './Header.scss'
 
 const Header = () => {   
     const user = useSelector(state => state.user); 
-    let [loged, setLoged] = useState(user? true : false);
+    let [logged, setLogged] = useState(user.name? true : false);
     let [admin, setAdmin] = useState(user.admin? true : false);
+
+    console.log(user);
+
+    useEffect(() => {
+        if(user.name) setLogged(true);
+        if(user.admin) setAdmin(true);
+    }, [user]);
+
+    
+    console.log(logged);
     const change = () => {
         const navbarLinks = document.getElementsByClassName('navbar-links')[0];
         navbarLinks.classList.toggle('active')
@@ -27,28 +37,36 @@ const Header = () => {
                 </a>
                 <div className="navbar-links">
                     <ul>
+                        {!logged && 
+                        <>
+                            <li>
+                                <Link to="./register" onClick={() => {change()}}>
+                                    <div>Register</div>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="./login" onClick={() => {change()}}>
+                                    <div>Login</div>
+                                </Link>
+                            </li>
+                        </>
+                        }
+                        {logged && 
+                            <li>
+                                <Link to="./profile" onClick={() => {change()}}>
+                                    <div>Profile</div>
+                                </Link>
+                            </li>
+                        }
+                        {admin && 
+                            <li>
+                                <Link to="./seed" onClick={() => {change()}}>
+                                    <div>Seed</div>
+                                </Link>
+                            </li>
+                        }
                         <li>
-                            <Link to="./register" onClick={() => {change()}}>
-                                <div>Register</div>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="./login">
-                                <div>Login</div>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="./profile">
-                                <div>Profile</div>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="./seed">
-                                <div>Seed</div>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="./search">
+                            <Link to="./search" onClick={() => {change()}}>
                                 <div>Search</div>
                             </Link>
                         </li>
