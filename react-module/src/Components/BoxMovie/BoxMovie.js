@@ -5,7 +5,7 @@ function BoxMovie(props){
 
     return(
         <div className="boxMF">
-            <div className="cntPoster" onClick={() =>props.funcion(props.movies)}>
+            <div className="cntPoster" onClick={() =>props.funcion(props.peli)}>
                 <img src={ props.ruta } className="imgMF" alt=""></img>
             </div>
         </div>

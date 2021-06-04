@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import './Header.scss'
 
-const Header = () => {    
+const Header = () => {   
+    const user = useSelector(state => state.user); 
+    let [loged, setLoged] = useState(user? true : false);
+    let [admin, setAdmin] = useState(user.admin? true : false);
     const change = () => {
         const navbarLinks = document.getElementsByClassName('navbar-links')[0];
         navbarLinks.classList.toggle('active')
     }
+
     return(
         <div className="container">
             <nav className="navbar">
                 <div className="brand-title">
                     <Link to="./">
-                        <div>LOGO</div>
+                        <div>Movie Social</div>
                     </Link>
                 </div>
                 <a href="#" className="toggle-button" onClick={() => {change()}}>
@@ -23,7 +28,7 @@ const Header = () => {
                 <div className="navbar-links">
                     <ul>
                         <li>
-                            <Link to="./register">
+                            <Link to="./register" onClick={() => {change()}}>
                                 <div>Register</div>
                             </Link>
                         </li>

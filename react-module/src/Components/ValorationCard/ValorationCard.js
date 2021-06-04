@@ -9,7 +9,7 @@ const ValorationCard = (props) => {
                 <img 
                     src={`https://image.tmdb.org/t/p/original/${props.ruta}`} 
                     alt="fondo" 
-                    className="imgMD"/>
+                    className="img-valoration"/>
             </div>
             <div className="valoration_contend">
                 <div className="valoration_title">{props.title}</div>

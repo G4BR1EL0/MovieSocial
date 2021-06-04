@@ -7,6 +7,8 @@ import RegisterPage from './Containers/RegisterPage/RegisterPage.js';
 import SearchPage from './Containers/SearchPage/SearchPage';
 import ProfilePage from './Containers/ProfilePage/ProfilePage';
 import Seeder from './Components/Seeder/Seeder.js';
+import MovieDetailPage from './Containers/MovieDetailPage/MovieDetailPage';
+
 
 function App() {
   return (
@@ -25,6 +27,9 @@ function App() {
           </Route>
           <Route path="/search" exact>
             <SearchPage/>
+          </Route>
+          <Route path="/movieDetail" exact>
+            <MovieDetailPage/>
           </Route>
           <Route path="/profile" exact>
             <ProfilePage/>
