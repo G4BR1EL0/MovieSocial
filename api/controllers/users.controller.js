@@ -47,6 +47,7 @@ export const userController = {
         res.send(respuesta);
     },
     update: async (req,res) => {
+        console.log(req.headers);
         let respuesta = await User.findByIdAndUpdate(req.headers.id, req.body);
         res.send(respuesta);
     }

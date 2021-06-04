@@ -39,6 +39,23 @@ const ApiConsumer = {
             console.log(error);
         }
     },
+    updateUser : async (id, name, email, password, admin = false) => {
+        try {
+            let response = await fetch(`${urlLocal}/user`, 
+            { method: 'PATCH', 
+            body: JSON.stringify({ 
+                name: name,
+                email: email, 
+                password: password,
+                admin: admin}),
+            headers:{id:id}
+            });
+            response = await response.json();
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
     getUser : async (token) => {
         try {
             let response = await fetch(`${urlLocal}/user`, 
