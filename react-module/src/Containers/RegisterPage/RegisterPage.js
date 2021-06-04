@@ -5,7 +5,6 @@ const RegisterPage = () => {
 
     return(
         <div>
-            Register
             <Register/>
         </div>
            
