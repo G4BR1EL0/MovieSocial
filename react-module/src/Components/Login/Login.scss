@@ -10,23 +10,15 @@
     display: flex;
     flex-direction:column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     width: 20em;
     height: 50vh;
     border-radius: 3em;
     box-shadow: 0 0 2em rgba(255,255,255,0.8),
                 inset 0 0 0.8em rgba(255,255,255,0.5);
 }
-.row{
-    display: flex;
-    flex-direction: row;
-}
 .login-box div{
     margin: 0.1em;
-}
-.relleno{
-    width: 1em;
-    height: 1em;
 }
 .login-button{
     padding-top: 1em;

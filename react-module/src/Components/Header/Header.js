@@ -69,6 +69,10 @@ const Header = () => {
                             <Link to="./search" onClick={() => {change()}}>
                                 <div>Search</div>
                             </Link>
+                            
+                        </li>
+                        <li>
+                            <input type="text"></input>
                         </li>
                     </ul>
                 </div>

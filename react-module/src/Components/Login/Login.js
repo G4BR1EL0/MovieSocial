@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector } from 'react-redux';
 import apiLogin from '../../Store/Services/apiLogin';
 import './Login.scss'
+import Input from '../Input/Input';
 
 const Login = () => {        
     const dispatch = useDispatch();
@@ -16,7 +17,6 @@ const Login = () => {
         dispatch(apiLogin(email, password));        
     }
     const token = useSelector(state => state.token.jwt);
-
     if (token) {
         console.log("redireccionar home")
         history.push('/');
@@ -29,26 +29,18 @@ const Login = () => {
                     <div className="login-title">
                         <label>Login</label>
                     </div>
-                    <div className="row">
-                        <div><label>email: </label></div>
-                        <div>
-                            <input type="email" 
-                            placeholder="email" 
-                            onChange={e => setEmail(e.target.value)}>
-                                </input>
-                        </div>
-                        <div className="relleno"></div>
-                    </div>
-                    <div className="row">
-                        <div><label >password: </label></div>
-                        <div>
-                        <input type="password" 
-                        placeholder="Password" 
-                        onChange={e => setPassword(e.target.value)}>                            
-                        </input>
-                        </div>
-                        <div className="relleno"></div>
-                    </div>
+                        <Input 
+                            type='email'
+                            label='Email'
+                            setter={setEmail}    
+                            name='email'
+                        />
+                        <Input 
+                            type='password'
+                            label='Password'
+                            setter={setPassword}    
+                            name='password'
+                        />
                     <div className="login-button">
                         <button type="submit">Send</button>
                     </div>
