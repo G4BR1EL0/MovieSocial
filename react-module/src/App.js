@@ -8,6 +8,8 @@ import SearchPage from './Containers/SearchPage/SearchPage';
 import ProfilePage from './Containers/ProfilePage/ProfilePage';
 import Seeder from './Components/Seeder/Seeder.js';
 import MovieDetailPage from './Containers/MovieDetailPage/MovieDetailPage';
+import AddValoration from './Components/AddValoration/AddValoration';
+
 
 
 function App() {
@@ -30,6 +32,9 @@ function App() {
           </Route>
           <Route path="/movieDetail" exact>
             <MovieDetailPage/>
+          </Route>
+          <Route path="/add-valoration" exact>
+            <AddValoration/>
           </Route>
           <Route path="/profile" exact>
             <ProfilePage/>

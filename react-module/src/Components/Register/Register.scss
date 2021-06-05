@@ -10,11 +10,11 @@
     display: flex;
     flex-direction:column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     width: 20em;
     height: 50vh;
     border-radius: 3em;
-    box-shadow: 0 0 2em rgba(255,255,255,0.8),
+    box-shadow: 0 0 1.5em rgba(255,255,255,0.5),
                 inset 0 0 0.8em rgba(255,255,255,0.5);
 }
 .row{
@@ -23,10 +23,6 @@
 }
 .register-box div{
     margin: 0.1em;
-}
-.relleno{
-    width: 1em;
-    height: 1em;
 }
 .register-button{
     padding-top: 1em;
@@ -38,8 +34,7 @@
     color: white;
     position: relative;
     font-size: 1.5em;
-    font-weight: bold;
-    top: -1em;
+    font-weight: bold;  
     padding: 0;
     margin: 0;
     width: 100%;

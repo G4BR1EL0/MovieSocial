@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './Register.scss';
+import Input from "../Input/Input";
 
 const Register = () => {
     let [name, setName] = useState("");
@@ -30,32 +31,24 @@ const Register = () => {
                     <div className="register-title">
                         <label>Register</label>
                     </div>
-                    <div className="row">
-                        <div><label>name: </label></div>
-                        <div>
-                            <input type="text" 
-                            placeholder="Name"
-                            name="name" 
-                            onChange={e => setName(e.target.value)} required></input>
-                        </div>
-                        <div className="relleno"></div>
-                    </div>
-                    <div className="row">
-                        <div><label>email: </label></div>
-                        <div>
-                        <input  type="email" placeholder="E-mail" 
-                        name="email" onChange={e => setEmail(e.target.value)} required></input>
-                        </div>
-                        <div className="relleno"></div>
-                    </div>
-                    <div className="row">
-                        <div><label>password: </label></div>
-                        <div>
-                        <input type="password" placeholder="Password" 
-                        name="password" onChange={e => setPassword(e.target.value)} required></input>
-                        </div>
-                        <div className="relleno"></div>
-                    </div>
+                    <Input 
+                        type='text'
+                        label='Name'
+                        setter={setName}    
+                        name='name'
+                    />
+                    <Input 
+                        type='email'
+                        label='Email'
+                        setter={setEmail}    
+                        name='email'
+                    />
+                    <Input 
+                        type='password'
+                        label='Password'
+                        setter={setPassword}    
+                        name='password'
+                    />
                     <div className="register-button">
                         <button type="submit">Send</button>
                     </div>

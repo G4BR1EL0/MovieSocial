@@ -1,7 +1,7 @@
 import React from "react";
 import './Input.scss';
 
-const Input = ({type, label, setter, name}) => {
+const Input = ({type, label, setter, name, value}) => {
     const action = (e) => {
         setter(e.target.value)
     }
@@ -13,6 +13,7 @@ const Input = ({type, label, setter, name}) => {
                 placeholder={label} 
                 name={name}
                 autoComplete="off" 
+                value= {value}
                 onChange={action}
                 required 
             />

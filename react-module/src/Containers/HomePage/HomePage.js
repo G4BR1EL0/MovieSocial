@@ -1,5 +1,4 @@
 import React from "react";
-import Input from "../../Components/Input/Input";
 import MovieCarousel from "../../Components/MovieCarousel/MovieCarousel";
 import ValorationCarousel from '../../Components/ValorationCarousel/ValorationCarousel.js';
 
@@ -9,7 +8,6 @@ const HomePage = () => {
         <div>
             <MovieCarousel/>
             <ValorationCarousel/>
-            <Input/>
         </div>
            
     )
