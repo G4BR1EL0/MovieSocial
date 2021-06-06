@@ -8,6 +8,7 @@ const ValorationsBox = (props) => {
     const user = useSelector(state => state.user);
     let [valorations, setValorations] = useState([]);
     let [editable, setEditable] = useState(props.userId === user._id? true : false);
+    let [recharge, setRecharge] = useState(false);
 
     let search;
     let data = '';
@@ -17,13 +18,11 @@ const ValorationsBox = (props) => {
         //si el usuario es el logado colocar boton editar y eliminar
         //al hacer click en editar incluir valoracion en el store con los datos necesarios
         //al hacer click en eliminar borrar la valoracion y recargar las valoraciones
-    }
-    if(props.movie){
+    }else if(props.movie){
         search = ApiConsumer.getValorationByMovie;
         data = props.movie;
         //setData(props.movie);
-    }
-    if(props.recent){
+    } else {
         search = ApiConsumer.getValorations;
     }
 
@@ -34,8 +33,25 @@ const ValorationsBox = (props) => {
                 setValorations(result.respuesta);
             }
         }      
-        getValoration();  
-    }, [])
+        getValoration();
+    }, []);
+
+    useEffect(() => {
+        const getValoration = async() => {
+            let result= await search(data);
+            if(result.respuesta.length>0){
+                setValorations(result.respuesta);
+            }
+        }      
+        getValoration();
+    }, [recharge]);
+
+    const reload = () => {
+        let value = recharge;
+        value = !value;
+        console.log(value);
+        setRecharge(value);
+    }
 
     return(
         <div className="box-container">            
@@ -44,6 +60,7 @@ const ValorationsBox = (props) => {
                     return(
                         <ValorationCard 
                         key={index} 
+                        recharge = {reload}
                         valoration = {valoration}
                         ruta={valoration.movie.backdrop_path} 
                         title={valoration.movie.title.toUpperCase()}

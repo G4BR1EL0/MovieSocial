@@ -3,6 +3,7 @@ import './ValorationCard.scss';
 import { valorationAction } from '../../Store/Actions/valorationAction.js';
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router";
+import ApiConsumer from "../../Util/ApiConsumer";
 
 const ValorationCard = (props) => {
     let [editable, setEditable] = useState(props.valoration? true : false);
@@ -13,9 +14,14 @@ const ValorationCard = (props) => {
         history.push('/editValoration');
         
     }
-    const deleteValoration = (valoration) => {
-        //preguntar si estas seguro?
-        //borrar una valoracion y usar un setter de componente padre para recargarlo
+    const deleteValoration =  async (valoration) => {
+        if(window.confirm('Are you sure want to delete Valoration?')){
+            let respuesta = await ApiConsumer.deleteValoration(valoration._id);
+            if(respuesta){
+                console.log(respuesta);
+                props.recharge();
+            }
+        }
     }
     
     return(

@@ -10,8 +10,8 @@ valorationRoutes.get("/by-user", valorationController.listByUser);
 valorationRoutes.get("/by-movie", valorationController.listByMovie);
 valorationRoutes.post("/", valorationController.create);
 valorationRoutes.patch("/", valorationController.update);
+valorationRoutes.delete("/", valorationController.delete);
 valorationRoutes.delete("/all", valorationController.deleteAll);
-valorationRoutes.delete("/:id", valorationController.delete);
 
 // valorationRoutes.post("/", checkJWT, valorationController.create);
 // valorationRoutes.patch("/", checkJWT, valorationController.update);

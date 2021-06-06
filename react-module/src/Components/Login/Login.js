@@ -18,7 +18,6 @@ const Login = () => {
     }
     const token = useSelector(state => state.token.jwt);
     if (token) {
-        console.log("redireccionar home")
         history.push('/');
     }
 

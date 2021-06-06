@@ -36,9 +36,10 @@ export const valorationController = {
             console.log(error);
         }
     },
-    //solo admin
     delete: async (req,res) => {
-        let respuesta = await Valoration.findByIdAndDelete(req.params.id);
+        console.log(req.headers.id);
+        let respuesta = await Valoration.findByIdAndDelete(req.headers.id);
+        console.log(respuesta);
         res.send(respuesta);
     },
     deleteAll: async (req,res) => {

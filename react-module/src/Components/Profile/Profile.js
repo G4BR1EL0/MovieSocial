@@ -1,5 +1,7 @@
 import React from "react";
 import ApiConsumer from "../../Util/ApiConsumer";
+import { useHistory } from "react-router";
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import './Profile.scss';
 import Input from "../Input/Input";
@@ -15,6 +17,12 @@ const Profile = (props) => {
         let respuesta = await ApiConsumer.updateUser(props.user._id, name, email, password);
         console.log(respuesta)
     }    
+
+    const history = useHistory();
+    const token = useSelector(state => state.token.jwt);
+    if (!token) {
+        history.push('/');
+    }
     
     return(
         <div className="register-container">

@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ApiConsumer from "../../Util/ApiConsumer";
+import { useHistory } from "react-router";
 
 const AddValoration = () => {
     let [comment, setComment] = useState('');
     let [stars, setStars] = useState(0);
+    const history = useHistory();
     const user = useSelector(state => state.user);
     const movie = useSelector(state => state.movie);
     const handleSubmit = async (e) => {
+        
         e.preventDefault();
         let valoration = {};
         valoration.movie = movie._id;
@@ -19,8 +22,7 @@ const AddValoration = () => {
         let respuesta = await ApiConsumer.insertValoration(valoration); 
 
         if (respuesta){
-            setComment('');
-            setStars(0);
+            history.push('/');
             //llevar a home y mostrar la ultima valoracion más visible que el resto si es la tuya
             //mensaje exito
         };     

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ApiConsumer from "../../Util/ApiConsumer";
+import { useHistory } from "react-router";
+
 
 const EditValoration = () => {
     const valoration = useSelector(state => state.valoration);
+    const history = useHistory();
     let [comment, setComment] = useState(''); 
     let [stars, setStars] = useState(0); 
     useEffect(() => {
@@ -22,8 +25,7 @@ const EditValoration = () => {
           
         let respuesta = await ApiConsumer.updateValoration(valorationAdd); 
         if (respuesta){
-            setComment('');
-            setStars(0);
+            history.push('/profile');
             //llevar a profile y mostrar la ultima valoracion más visible que el resto 
             //mensaje exito
         };     
