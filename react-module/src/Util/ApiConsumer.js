@@ -168,6 +168,20 @@ const ApiConsumer = {
             console.log(error);
         }
     },
+    getMoviesSearch : async (value) => {
+        try {
+            let response = await fetch(`${urlLocal}/movies/value/`, 
+            { method: 'GET',             
+                headers:{
+                    'value': value
+                }
+            });
+            response = await response.json();
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
     deleteSeed : async () => {
         try {
             let response = await fetch(`${urlLocal}/movies/all`, { method: 'DELETE' });

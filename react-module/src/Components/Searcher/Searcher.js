@@ -23,20 +23,21 @@ const Searcher = () => {
     },[])
 
     const searchMovies = async (value) => {
-        let moviesByTitle= await ApiConsumer.getMoviesByTitle(value);
-        let moviesByGenre= await ApiConsumer.getMoviesByGenre(value);
-        let moviesByActor= await ApiConsumer.getMoviesByActor(value);
-        let moviesByDirector= await ApiConsumer.getMoviesByDirector(value);
-        let moviesList = moviesByTitle.concat(moviesByGenre, moviesByActor, moviesByDirector);
+        // let moviesByTitle= await ApiConsumer.getMoviesByTitle(value);
+        // let moviesByGenre= await ApiConsumer.getMoviesByGenre(value);
+        // let moviesByActor= await ApiConsumer.getMoviesByActor(value);
+        // let moviesByDirector= await ApiConsumer.getMoviesByDirector(value);
+        // let moviesList = moviesByTitle.concat(moviesByGenre, moviesByActor, moviesByDirector);
 
-        //process to filter repated movies 
-        let moviesMap = moviesList.map(item =>{
-            return [item._id, item]
-        });
-        let moviesMapArr = new Map(moviesMap);
-        let moviesFiltered = [...moviesMapArr.values()]; 
-
-        setMovies(moviesFiltered);
+        // //process to filter repated movies 
+        // let moviesMap = moviesList.map(item =>{
+        //     return [item._id, item]
+        // });
+        // let moviesMapArr = new Map(moviesMap);
+        // let moviesFiltered = [...moviesMapArr.values()]; 
+        let response = await ApiConsumer.getMoviesSearch(value)
+        console.log(response)
+        setMovies(response);
     }
 
     const popularMovies = async () => {
@@ -44,7 +45,6 @@ const Searcher = () => {
         setMovies(response);
     }
 
-    
     const history = useHistory();
     const dispatch = useDispatch();
     const detalles = (movie) => {

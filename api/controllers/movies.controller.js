@@ -9,6 +9,16 @@ export const movieController = {
         let respuesta = await Movies.findOne({_id:req.headers.id});
         res.send(respuesta);
     },
+    searchMovie: async (req, res) => {
+        let respuesta = await Movies.find(
+                            {$or: [
+                                    {title:{ $regex: '.*' + req.headers.value + '.*' }},
+                                    {genres:{ $regex: '.*' + req.headers.value + '.*' }},
+                                    {cast: { $regex: '.*' + req.headers.value + '.*' }},
+                                    {director: { $regex: '.*' + req.headers.value + '.*' }}
+                                  ]});
+        res.send(respuesta);
+    },
     searchTitle: async (req, res) => {
         let respuesta = await Movies.find({title:{ $regex: '.*' + req.headers.title + '.*' }});
         res.send(respuesta);

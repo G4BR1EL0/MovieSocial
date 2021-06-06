@@ -4,6 +4,7 @@ import { movieController } from '../controllers/movies.controller.js';
 const movieRoutes = Router();
 
 movieRoutes.get("/", movieController.list);
+movieRoutes.get("/value", movieController.searchMovie);
 movieRoutes.get("/title", movieController.searchTitle);
 movieRoutes.get("/genre", movieController.searchGenre);
 movieRoutes.get("/actors", movieController.searchActors);

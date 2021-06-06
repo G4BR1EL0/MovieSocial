@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import './MovieDetail.scss'
 
 const MovieDetail = ({movie}) => {
+    
     return (
         <>
         <div className="movie-detail-container">
@@ -11,7 +11,7 @@ const MovieDetail = ({movie}) => {
             alt="fondo"/>
         </div>
         <div className="movie-detail-title">
-            <span>{movie.title.toUpperCase()}</span>
+            <span>{movie.title && movie.title.toUpperCase()}</span>
         </div>
         <div className="cursive">
             <span>{movie.tagline}</span>    
@@ -20,7 +20,7 @@ const MovieDetail = ({movie}) => {
             <span>{movie.overview}</span>    
         </div>
         <div><span className="cursive">Cast:</span> 
-        {movie.cast.map((actor, index) => {
+        {movie.cast && movie.cast.map((actor, index) => {
             if(index){
                 return(
                     <span key={index}>, {actor}</span>
@@ -32,7 +32,7 @@ const MovieDetail = ({movie}) => {
         })}
         </div>
         <div><span className="cursive">Genre:</span>  
-        {movie.genres.map((genre, index) => {
+        {movie.genres && movie.genres.map((genre, index) => {
             if(index){
                 return(
                     <span key={index}>, {genre}</span>
