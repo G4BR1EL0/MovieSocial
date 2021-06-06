@@ -5,7 +5,24 @@ dotenv.config();
 
 export const valorationController = {
     list: async (req,res) => {
-        let respuesta = await Valoration.find().populate('user').populate('movie');
+        let respuesta = await Valoration.find()
+                                        .populate('user')
+                                        .populate('movie')
+                                        .sort('-_id');
+        res.json({respuesta});
+    },
+    listByUser: async (req,res) => {
+        let respuesta = await Valoration.find({user : req.headers.id})
+                                        .populate('user')
+                                        .populate('movie')
+                                        .sort('-_id');
+        res.json({respuesta});
+    },
+    listByMovie: async (req,res) => {
+        let respuesta = await Valoration.find({movie : req.headers.id})
+                                        .populate('user')
+                                        .populate('movie')
+                                        .sort('-_id');
         res.json({respuesta});
     },
     create: async (req,res) => {
@@ -29,7 +46,12 @@ export const valorationController = {
         res.send(respuesta);
     },
     update: async (req,res) => {
-        let respuesta = await Valoration.findByIdAndUpdate(req.headers.id, req.body);
+        console.log(req.body);
+        let respuesta = await Valoration.updateOne({_id:req.body.id}, 
+                        {$set:{comment:req.body.comment, stars:req.body.stars}})
+        console.log(respuesta);
         res.send(respuesta);
+        //.findOneAndUpdate({matchQuery},
+        //{$set: updateData}, {useFindAndModify: false})
     }
 }

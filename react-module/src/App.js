@@ -9,6 +9,7 @@ import ProfilePage from './Containers/ProfilePage/ProfilePage';
 import Seeder from './Components/Seeder/Seeder.js';
 import MovieDetailPage from './Containers/MovieDetailPage/MovieDetailPage';
 import AddValoration from './Components/AddValoration/AddValoration';
+import EditValoration from './Components/EditValoration/EditValoration.js';
 
 
 
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/add-valoration" exact>
             <AddValoration/>
+          </Route>
+          <Route path="/editValoration" exact>
+            <EditValoration/>
           </Route>
           <Route path="/profile" exact>
             <ProfilePage/>

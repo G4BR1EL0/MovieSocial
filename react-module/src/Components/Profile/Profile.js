@@ -1,15 +1,14 @@
 import React from "react";
 import ApiConsumer from "../../Util/ApiConsumer";
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import './Profile.scss';
+import Input from "../Input/Input";
 
 const Profile = (props) => {
     let [name, setName] = useState(props.user? props.user.name : ''); 
     let [email, setEmail] = useState(props.user? props.user.email : '');
     let [password, setPassword] = useState(props.user? props.user.password : '');
     
-    const history = useHistory();
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(name, email, password);
@@ -24,41 +23,29 @@ const Profile = (props) => {
                     <div className="register-title">
                         <label>Profile</label>
                     </div>
-                    <div className="row">
-                        <div><label>name: </label></div>
-                        <div>
-                            <input type="text" 
-                            placeholder="Name"
-                            name="name" 
-                            value={name}
-                            onChange={e => setName(e.target.value)} required></input>
-                        </div>
-                        <div className="relleno"></div>
-                    </div>
-                    <div className="row">
-                        <div><label>email: </label></div>
-                        <div>
-                            <input  type="email" 
-                            placeholder="E-mail" 
-                            name="email" 
-                            value={email}
-                            onChange={e => setEmail(e.target.value)} required></input>
-                        </div>
-                        <div className="relleno"></div>
-                    </div>
-                    <div className="row">
-                        <div><label>password: </label></div>
-                        <div>
-                            <input type="password" 
-                            placeholder="Password" 
-                            name="password" 
-                            value={password}
-                            onChange={e => setPassword(e.target.value)} required></input>
-                        </div>
-                        <div className="relleno"></div>
-                    </div>
+                    <Input 
+                        type = 'text'
+                        label = 'Name'
+                        value = {name}
+                        setter = {setName}    
+                        name = 'name'
+                    />
+                    <Input 
+                        type = 'email'
+                        label = 'Email'
+                        value = {email}
+                        setter = {setEmail}    
+                        name = 'email'
+                    />
+                    <Input 
+                        type ='password'
+                        label ='Password'
+                        value = {password}
+                        setter = {setPassword}    
+                        name = 'password'
+                    />
                     <div className="register-button">
-                        <button type="submit">Send</button>
+                        <button type="submit">Save</button>
                     </div>
                 </div>
             </form>

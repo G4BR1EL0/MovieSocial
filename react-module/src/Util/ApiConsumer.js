@@ -41,7 +41,6 @@ const ApiConsumer = {
     },
     updateUser : async (id, name, email, password, admin = false) => {
         try {
-            console.log(id, name, email, password, admin);
             let response = await fetch(`${urlLocal}/user`, 
             { method: 'PATCH', 
                 body: JSON.stringify({ 
@@ -212,14 +211,43 @@ const ApiConsumer = {
             headers:{'Content-Type': 'application/json'}
             });
             response = await response.json();
+            console.log(response);
             return response;
         } catch (error) {
             console.log(error);
         }
     },
-    getValoration : async () => {
+    getValorations : async () => {
         try {
             let response = await fetch(`${urlLocal}/valoration`, { method: 'GET' });
+            response = await response.json();
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    getValorationByMovie : async (idUser) => {
+        try {
+            let response = await fetch(`${urlLocal}/valoration/by-movie`, 
+            { method: 'GET',             
+                headers:{
+                    'id': idUser
+                }
+            });
+            response = await response.json();
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    getValorationByUser : async (idMovie) => {
+        try {
+            let response = await fetch(`${urlLocal}/valoration/by-user`, 
+            { method: 'GET',             
+                headers:{
+                    'id': idMovie
+                }
+            });
             response = await response.json();
             return response;
         } catch (error) {

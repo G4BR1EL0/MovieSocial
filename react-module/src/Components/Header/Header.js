@@ -8,15 +8,11 @@ const Header = () => {
     let [logged, setLogged] = useState(user.name? true : false);
     let [admin, setAdmin] = useState(user.admin? true : false);
 
-    console.log(user);
-
     useEffect(() => {
         if(user.name) setLogged(true);
         if(user.admin) setAdmin(true);
     }, [user]);
 
-    
-    console.log(logged);
     const change = () => {
         const navbarLinks = document.getElementsByClassName('navbar-links')[0];
         navbarLinks.classList.toggle('active')

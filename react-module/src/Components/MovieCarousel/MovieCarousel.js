@@ -13,7 +13,6 @@ const MovieCarousel = (props) => {
   useEffect(() => {
       const getMovies = async() => {
           let result= await ApiConsumer.getMovies();
-          console.log(result);
           setMovies(result);
       }      
       getMovies();  

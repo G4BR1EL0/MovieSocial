@@ -6,6 +6,8 @@ import checkJWT from '../middlewares/checkJWT.middleware.js';
 const valorationRoutes = Router();
 
 valorationRoutes.get("/", valorationController.list);
+valorationRoutes.get("/by-user", valorationController.listByUser);
+valorationRoutes.get("/by-movie", valorationController.listByMovie);
 valorationRoutes.post("/", valorationController.create);
 valorationRoutes.patch("/", valorationController.update);
 valorationRoutes.delete("/all", valorationController.deleteAll);

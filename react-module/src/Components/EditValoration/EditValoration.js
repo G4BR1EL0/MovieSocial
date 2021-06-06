@@ -1,27 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ApiConsumer from "../../Util/ApiConsumer";
 
-const AddValoration = () => {
-    let [comment, setComment] = useState('');
-    let [stars, setStars] = useState(0);
-    const user = useSelector(state => state.user);
-    const movie = useSelector(state => state.movie);
+const EditValoration = () => {
+    const valoration = useSelector(state => state.valoration);
+    let [comment, setComment] = useState(''); 
+    let [stars, setStars] = useState(0); 
+    useEffect(() => {
+        setComment(valoration.comment);
+        setStars(valoration.stars);
+    }, []);
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let valoration = {};
-        valoration.movie = movie._id;
-        valoration.user = user._id;
-        valoration.comment = comment;
-        valoration.stars = stars;
+        let valorationAdd = {};
+        valorationAdd.id = valoration._id;
+        valorationAdd.movie = valoration.movie._id;
+        valorationAdd.user = valoration.user._id;
+        valorationAdd.comment = comment;
+        valorationAdd.stars = stars;
           
-        console.log(valoration);
-        let respuesta = await ApiConsumer.insertValoration(valoration); 
-
+        let respuesta = await ApiConsumer.updateValoration(valorationAdd); 
         if (respuesta){
             setComment('');
             setStars(0);
-            //llevar a home y mostrar la ultima valoracion más visible que el resto si es la tuya
+            //llevar a profile y mostrar la ultima valoracion más visible que el resto 
             //mensaje exito
         };     
     }
@@ -32,11 +35,13 @@ const AddValoration = () => {
 
     return(
         <form onSubmit={handleSubmit}>
+            <div>{valoration.movie.title} </div>
             <div className="form__group field">
                 <textarea 
                     className="form__field" 
                     placeholder="write your valoration here"
                     name="valoration"
+                    value={comment}
                     onChange={e => {setComment(e.target.value)}}
                     required ></textarea>
                 <label htmlFor='name' className="form__label">write your valoration here</label>
@@ -46,6 +51,7 @@ const AddValoration = () => {
                     className ="estrellas"
                     type="number"
                     name="stars"
+                    value={stars}
                     onChange = {e => {setStars(e.target.value)}}
                     required
                      >
@@ -56,4 +62,4 @@ const AddValoration = () => {
     )
 }
 
-export default AddValoration;
+export default EditValoration;

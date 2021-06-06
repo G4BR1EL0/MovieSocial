@@ -1,11 +1,7 @@
 import React, { useEffect, useState }  from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { useDispatch } from 'react-redux';
-import { useHistory } from "react-router";
 import ApiConsumer from "../../Util/ApiConsumer.js";
-import BoxMovie from '../BoxMovie/BoxMovie.js';
-import { movieAction } from '../../Store/Actions/movieActions.js';
 import ValorationCard from '../ValorationCard/ValorationCard.js';
 
 
@@ -15,13 +11,11 @@ const ValorationCarousel = (props) => {
     let [pintar, setPintar] = useState(false);
     useEffect(() => {
         const getValoration = async() => {
-            let result= await ApiConsumer.getValoration();
-            console.log(result.respuesta);
+            let result= await ApiConsumer.getValorations();
             if(result.respuesta.length>0){
                 setValorations(result.respuesta);
                 setPintar(true);
             }
-            
         }      
         getValoration();  
     }, [])

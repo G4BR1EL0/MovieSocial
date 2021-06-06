@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import './MovieDetail.scss'
 
-const MovieDetail = () => {
-
-    const movie = useSelector(state => state.movie);
-    const user = useSelector(state => state.user);
-
+const MovieDetail = ({movie}) => {
     return (
         <>
         <div className="movie-detail-container">
