@@ -5,6 +5,7 @@ import { movieAction } from '../../Store/Actions/movieActions.js';
 import ApiConsumer from '../../Util/ApiConsumer.js';
 import BoxMovie from '../BoxMovie/BoxMovie.js';
 import './Searcher.scss'
+import Input from '../Input/Input.js';
 
 
 const Searcher = () => {
@@ -28,7 +29,14 @@ const Searcher = () => {
         let moviesByDirector= await ApiConsumer.getMoviesByDirector(value);
         let moviesList = moviesByTitle.concat(moviesByGenre, moviesByActor, moviesByDirector);
 
-        setMovies(moviesList);
+        //process to filter repated movies 
+        let moviesMap = moviesList.map(item =>{
+            return [item._id, item]
+        });
+        let moviesMapArr = new Map(moviesMap);
+        let moviesFiltered = [...moviesMapArr.values()]; 
+
+        setMovies(moviesFiltered);
     }
 
     const popularMovies = async () => {
@@ -46,26 +54,21 @@ const Searcher = () => {
     
     return (
         <div className="cntSearch">
-            <h3 className="txtS">Search</h3>
             <div className="cntMainS">
-                <div className="txtUse">
-                    <p className="txtP">From here, you can search for all the movies you want to see, by {criteria} </p> 
-                </div>
                 <div className="boxSearch">
-                    <div className="boxInfo">
-                        
-                    </div>
-                    <div className="boxIB">
-                        <input className="impS" type="text" onChange={(e) => setText(e.target.value)} ></input>
-                        <button onClick={(e) => buscarMovies(e)}>Search</button>
-                    </div>
+                    <Input 
+                        type='text'
+                        label='Search..'
+                        setter={setText}    
+                        name='search'
+                    />
                     <br/>
                     <div className="contenedor">
                         {movies.map((movie, index ) => {
                             return (
                                 <BoxMovie 
                                 key={index} 
-                                movies={movie} 
+                                peli={movie} 
                                 funcion={detalles} 
                                 ruta={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} 
                                 tagline={movie.tagline} />
