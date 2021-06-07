@@ -6,7 +6,9 @@ const HomePage = () => {
 
     return(
         <div>
+            <br/>
             <MovieCarousel/>
+            <br/><br/>
             <ValorationCarousel/>
         </div>
            
