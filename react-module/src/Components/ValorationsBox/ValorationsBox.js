@@ -3,6 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import { useSelector } from "react-redux";
 import ApiConsumer from "../../Util/ApiConsumer.js";
 import ValorationCard from '../ValorationCard/ValorationCard.js';
+import './ValorationsBox.scss';
 
 const ValorationsBox = (props) => {
     const user = useSelector(state => state.user);

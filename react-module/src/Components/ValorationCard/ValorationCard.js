@@ -32,7 +32,7 @@ const ValorationCard = (props) => {
                     alt="fondo" 
                     className="img-valoration"/>
             </div>
-            <div className="valoration_contend">
+            <div className="valoration_contend" >
                 <div className="valoration_title">{props.title}</div>
                 <div><span className="cursive">by </span>"{props.user}"</div>
                 <div>"{props.comment}"</div>
