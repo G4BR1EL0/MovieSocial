@@ -1,3 +1,22 @@
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3); 
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3); 
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8); 
+  }
+
 .img-valoration{
     width: 40vh;
 }
@@ -13,24 +32,25 @@
         width: 40vh;
         
     }
-    /* width */
-    ::-webkit-scrollbar .valoration_contend {
-        width: 5px;
+      /* width */
+  ::-webkit-scrollbar {
+    width: 5px;
     }
 
     /* Track */
-    ::-webkit-scrollbar-track .valoration_contend {
+    ::-webkit-scrollbar-track  {
         background: rgba(17, 153, 142, 0.3); 
     }
 
     /* Handle */
-    ::-webkit-scrollbar-thumb  .valoration_contend{
+    ::-webkit-scrollbar-thumb {
         background: rgba(17, 153, 142, 0.3); 
     }
     /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover .valoration_contend {
+    ::-webkit-scrollbar-thumb:hover {
         background: rgba(17, 153, 142, 0.8); 
     }
+    
 }
 
 
@@ -39,10 +59,11 @@
     max-height: 10em;
     overflow-y: auto;
     display: flex;
-    background-color: rgba(17, 153, 142, 0.3);
+    background-color: rgba(255, 255, 255, 0.15);
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     text-align: center;
     
 }
+

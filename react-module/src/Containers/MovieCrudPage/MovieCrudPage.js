@@ -1,16 +1,13 @@
 import React from "react";
 import Searcher from '../../Components/Searcher/Searcher.js';
 
-
-
-const SearchPage = () => {
+const MovieCrudPage = () => {
 
     return(
         <div>
-            <Searcher/>
+            <Searcher crud={true}/>
         </div>
-           
     )
 }
 
-export default SearchPage;
+export default MovieCrudPage;

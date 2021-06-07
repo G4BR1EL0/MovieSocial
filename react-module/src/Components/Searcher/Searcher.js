@@ -6,9 +6,10 @@ import ApiConsumer from '../../Util/ApiConsumer.js';
 import BoxMovie from '../BoxMovie/BoxMovie.js';
 import './Searcher.scss'
 import Input from '../Input/Input.js';
+import AddMovie from '../MovieForm/MovieForm.js';
 
 
-const Searcher = () => {
+const Searcher = (props) => {
     const criteria = useSelector(state => state.criteria);
     let [text, setText] = useState("")
     let [movies, setMovies] = useState([]);
@@ -35,8 +36,8 @@ const Searcher = () => {
         // });
         // let moviesMapArr = new Map(moviesMap);
         // let moviesFiltered = [...moviesMapArr.values()]; 
-        let response = await ApiConsumer.getMoviesSearch(value)
-        console.log(response)
+        let response = await ApiConsumer.getMoviesSearch(value);
+
         setMovies(response);
     }
 
@@ -51,6 +52,16 @@ const Searcher = () => {
         dispatch(movieAction(movie));
         history.push('/movieDetail');
     }
+
+    const AddMovie = () => {
+        
+    }
+    const EditMovie = (movie) => {
+        
+    }
+    const DeleteMovie = (movie) => {
+        
+    }
     
     return (
         <div className="cntSearch">
@@ -62,9 +73,26 @@ const Searcher = () => {
                         setter={setText}    
                         name='search'
                     />
+                    {props.crud &&
+                        <button onClick={() => {AddMovie()}}>Add Movie</button>
+                    }
                     <br/>
                     <div className="contenedor">
                         {movies.map((movie, index ) => {
+                            if(props.crud){
+                                return(
+                                    <div className="editable-movie">
+                                        <BoxMovie 
+                                        key={index} 
+                                        peli={movie} 
+                                        funcion={detalles} 
+                                        ruta={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} 
+                                        tagline={movie.tagline} />
+                                        <button onClick={() => {EditMovie(movie)}}>edit</button>
+                                        <button onClick={() => {DeleteMovie(movie)}}>delete</button>
+                                    </div>
+                                )
+                            }
                             return (
                                 <BoxMovie 
                                 key={index} 
