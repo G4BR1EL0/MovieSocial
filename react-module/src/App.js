@@ -10,6 +10,7 @@ import Seeder from './Components/Seeder/Seeder.js';
 import MovieDetailPage from './Containers/MovieDetailPage/MovieDetailPage';
 import AddValoration from './Components/AddValoration/AddValoration';
 import EditValoration from './Components/EditValoration/EditValoration.js';
+import { Footer } from './Components/Footer/Footer';
 
 
 
@@ -17,7 +18,7 @@ function App() {
   return (
     
     <BrowserRouter>
-      <Header></Header>
+      <Header/>
         <Switch>
           <Route path="/" exact>
             <HomePage/>
@@ -47,6 +48,7 @@ function App() {
             <Seeder/>
           </Route>
         </Switch>
+        <Footer/>
     </BrowserRouter>
     
   );
