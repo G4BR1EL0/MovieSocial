@@ -8,9 +8,7 @@ import './Searcher.scss'
 import Input from '../Input/Input.js';
 import AddMovie from '../MovieForm/MovieForm.js';
 
-
 const Searcher = (props) => {
-    const criteria = useSelector(state => state.criteria);
     let [text, setText] = useState("")
     let [movies, setMovies] = useState([]);
 
@@ -54,13 +52,25 @@ const Searcher = (props) => {
     }
 
     const AddMovie = () => {
-        
+        dispatch(movieAction({}));
+        history.push('/movieForm');
     }
     const EditMovie = (movie) => {
-        
+        dispatch(movieAction(movie));
+        history.push('/movieForm');
     }
-    const DeleteMovie = (movie) => {
-        
+    const DeleteMovie = async (movie) => {
+        if(window.confirm('Are you sure want to delete Movie?')){
+            let respuesta = await ApiConsumer.deleteMovie(movie._id);
+            if(respuesta){
+                let valorations =await ApiConsumer.getValorationByMovie(movie._id);
+                valorations.respuesta.forEach(async(valoration) => {
+                    await ApiConsumer.deleteValoration(valoration._id);
+                });
+                if(text) searchMovies(text);
+                else popularMovies();
+            }
+        }
     }
     
     return (

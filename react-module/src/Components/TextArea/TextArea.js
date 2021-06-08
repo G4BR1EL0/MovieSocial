@@ -1,7 +1,7 @@
 import React from "react";
 import './TextArea.scss';
 
-const TextArea = ({type, label, setter, name, value}) => {
+const TextArea = ({ label, setter, name, value}) => {
     const action = (e) => {
         setter(e.target.value)
     }
@@ -13,7 +13,7 @@ const TextArea = ({type, label, setter, name, value}) => {
                 name ={name}
                 rows ="5" 
                 cols ="100"
-                maxLength ="500"
+                maxLength ="1000"
                 autoComplete="off" 
                 value= {value}
                 onChange={action}

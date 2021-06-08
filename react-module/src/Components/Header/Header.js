@@ -54,12 +54,19 @@ const Header = () => {
                                 </Link>
                             </li>
                         }
-                        {admin && 
+                        {admin &&
+                            <> 
                             <li>
                                 <Link to="./seed" onClick={() => {change()}}>
                                     <div>Seed</div>
                                 </Link>
                             </li>
+                            <li>
+                                <Link to="./moviesCrud" onClick={() => {change()}}>
+                                    <div>MovieCrud</div>
+                                </Link>
+                            </li>
+                            </>
                         }
                         <li>
                             <Link to="./search" onClick={() => {change()}}>

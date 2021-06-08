@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Searcher from '../../Components/Searcher/Searcher.js';
 
 const MovieCrudPage = () => {
-
     return(
         <div>
             <Searcher crud={true}/>

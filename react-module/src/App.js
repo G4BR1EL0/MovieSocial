@@ -12,6 +12,7 @@ import AddValoration from './Components/AddValoration/AddValoration';
 import EditValoration from './Components/EditValoration/EditValoration.js';
 import { Footer } from './Components/Footer/Footer';
 import MovieForm from './Components/MovieForm/MovieForm.js';
+import MovieCrudPage from './Containers/MovieCrudPage/MovieCrudPage';
 
 
 
@@ -49,7 +50,7 @@ function App() {
             <Seeder/>
           </Route>
           <Route path="/moviesCrud" exact>
-            <Seeder/>
+            <MovieCrudPage/>
           </Route>
           <Route path="/movieForm" exact>
             <MovieForm/>

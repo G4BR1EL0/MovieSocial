@@ -191,6 +191,18 @@ const ApiConsumer = {
             console.log(error);
         }
     },
+    deleteMovie : async (id) => {
+        try {
+            let response = await fetch(`${urlLocal}/movies/`,
+            { method: 'DELETE',
+             headers: {id:id}
+            });
+            response = await response.json();
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
     insertMovie : async (movie) => {
         try {
             let response = await fetch(`${urlLocal}/movies`, 
@@ -199,6 +211,20 @@ const ApiConsumer = {
             headers:{'Content-Type': 'application/json'}
             });
             response = await response.json();
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    updateMovie : async (valoration) => {
+        try {
+            let response = await fetch(`${urlLocal}/movies`, 
+            { method: 'PATCH', 
+            body: JSON.stringify(valoration),
+            headers:{'Content-Type': 'application/json'}
+            });
+            response = await response.json();
+            console.log(response);
             return response;
         } catch (error) {
             console.log(error);
@@ -240,12 +266,12 @@ const ApiConsumer = {
             console.log(error);
         }
     },
-    getValorationByMovie : async (idUser) => {
+    getValorationByMovie : async (idMovie) => {
         try {
             let response = await fetch(`${urlLocal}/valoration/by-movie`, 
             { method: 'GET',             
                 headers:{
-                    'id': idUser
+                    'id': idMovie
                 }
             });
             response = await response.json();
@@ -254,12 +280,12 @@ const ApiConsumer = {
             console.log(error);
         }
     },
-    getValorationByUser : async (idMovie) => {
+    getValorationByUser : async (idUser) => {
         try {
             let response = await fetch(`${urlLocal}/valoration/by-user`, 
             { method: 'GET',             
                 headers:{
-                    'id': idMovie
+                    'id': idUser
                 }
             });
             response = await response.json();

@@ -48,7 +48,17 @@ export const movieController = {
         res.send(respuesta);
     },
     update: async (req, res) => {
-        let respuesta = await Movies.findByIdAndUpdate(req.headers.id, req.body);
+        let respuesta = await Movies.updateOne({_id:req.body.id}, 
+            {$set:{title:req.body.title, 
+                tagline:req.body.tagline,
+                backdrop_path:req.body.backdrop_path,
+                cast:req.body.cast,
+                genres:req.body.genres,
+                director:req.body.director,
+                overview:req.body.overview,
+                poster_path:req.body.poster_path,
+                video:req.body.video
+            }});
         res.send(respuesta);
     }
 } 
