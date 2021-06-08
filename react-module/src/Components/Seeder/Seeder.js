@@ -1,8 +1,14 @@
 import React from "react";
 import ApiConsumer from "../../Util/ApiConsumer";
+import './Seeder.scss';
 
 
 const Seeder = () => {
+    const seeder = () => {
+        borrar();
+        insertarSeed()
+    }
+
     const borrar = async () => {       
         let response1 = await ApiConsumer.deleteSeed();
         let response2 = await ApiConsumer.deleteUsers(); 
@@ -13,7 +19,7 @@ const Seeder = () => {
     }
     
     const insertarSeed = async () =>{
-        for (let i=1;i<51;i++){
+        for (let i=1;i<11;i++){
             await buscar(i);
         }
         await insertUsers();
@@ -119,9 +125,10 @@ const Seeder = () => {
         }
     }
     return(
-        <div>
-            <button id="buscar" onClick={()=>{insertarSeed()}}>insert SEED</button>
-            <button id="borrar" onClick={()=>{borrar()}}>delete SEED</button>          
+        <div className="seed-container">
+            <div className="seed-pulsable" onClick={() => { seeder()}}>
+                <span>USE SEED</span>
+            </div>
         </div>
            
     )

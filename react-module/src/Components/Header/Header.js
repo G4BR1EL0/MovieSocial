@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
-import './Header.scss'
+import './Header.scss';
+import {getUserAction} from "../../Store/Actions/loginActions.js";
 
 const Header = () => {   
+    const dispatch = useDispatch();
     const user = useSelector(state => state.user); 
     let [logged, setLogged] = useState(user.name? true : false);
     let [admin, setAdmin] = useState(user.admin? true : false);
@@ -16,6 +18,12 @@ const Header = () => {
     const change = () => {
         const navbarLinks = document.getElementsByClassName('navbar-links')[0];
         navbarLinks.classList.toggle('active')
+    }
+    const logout = () => {
+        const navbarLinks = document.getElementsByClassName('navbar-links')[0];
+        navbarLinks.classList.toggle('active');
+        dispatch(getUserAction({}));
+        window.location.reload();
     }
 
     return(
@@ -33,6 +41,11 @@ const Header = () => {
                 </a>
                 <div className="navbar-links">
                     <ul>
+                        <li>
+                            <Link to="./search" onClick={() => {change()}}>
+                                <div>Search</div>
+                            </Link>
+                        </li>
                         {!logged && 
                         <>
                             <li>
@@ -48,11 +61,13 @@ const Header = () => {
                         </>
                         }
                         {logged && 
+                        <>
                             <li>
                                 <Link to="./profile" onClick={() => {change()}}>
                                     <div>Profile</div>
                                 </Link>
                             </li>
+                        </>
                         }
                         {admin &&
                             <> 
@@ -68,11 +83,15 @@ const Header = () => {
                             </li>
                             </>
                         }
-                        <li>
-                            <Link to="./search" onClick={() => {change()}}>
-                                <div>Search</div>
-                            </Link>
-                        </li>
+                        {logged && 
+                        <>
+                            <li>
+                                <Link to="./" onClick={() => {logout()}}>
+                                    <div>Logout</div>
+                                </Link>
+                            </li>
+                        </>
+                        }
                     </ul>
                 </div>
             </nav>

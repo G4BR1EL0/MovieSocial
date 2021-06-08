@@ -1,3 +1,4 @@
+$title-color: #11998e;
 // .container{
 //     display: flex;
 //     flex-direction: row;
@@ -11,7 +12,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: black;
-    color: white;
+    color: $title-color;
 }
 
 .brand-title {
@@ -20,7 +21,7 @@
     text-decoration: none;
 }
 .brand-title a {
-    color: white;
+    color: $title-color;
     text-decoration: none;
 }
 
@@ -41,7 +42,7 @@
 .navbar-links li a {
     display: block;
     text-decoration: none;
-    color: white;
+    color: $title-color;
     padding: 1rem;
 }
 
@@ -63,7 +64,7 @@
 .toggle-button .bar {
     height: 3px;
     width: 100%;
-    background-color: white;
+    background-color: #11998e;
     border-radius: 10px;
 }
 
