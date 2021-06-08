@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 
 dotenv.config();
-//const urlLocal = process.env.REDLOCAL;
-const urlLocal = "http://127.0.0.1:5000";
+const urlLocal = process.env.REACT_APP_urlLocal;
+//const urlLocal = "http://127.0.0.1:5000";
 
 //Object used to connect to local API and to fetch information
 const ApiConsumer = {
