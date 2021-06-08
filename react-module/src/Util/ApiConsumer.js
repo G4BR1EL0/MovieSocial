@@ -1,13 +1,13 @@
 import dotenv from 'dotenv';
 
 dotenv.config();
-const urlLocal = process.env.REACT_APP_urlLocal;
+const apiUrl = process.env.REACT_APP_APIURL;
 //Object used to connect to local API and to fetch information
 const ApiConsumer = {
     
     login : async (email, password) => {
         try {
-            let response = await fetch(`${urlLocal}/login`, 
+            let response = await fetch(`${apiUrl}/login`, 
             { method: 'POST', 
                 body: JSON.stringify({ 
                     email: email, 
@@ -22,7 +22,7 @@ const ApiConsumer = {
     },
     register : async (name, email, password, admin = false) => {
         try {
-            let response = await fetch(`${urlLocal}/singup`, 
+            let response = await fetch(`${apiUrl}/singup`, 
             { method: 'POST', 
             body: JSON.stringify({ 
                 name: name,
@@ -39,7 +39,7 @@ const ApiConsumer = {
     },
     updateUser : async (id, name, email, password, admin = false) => {
         try {
-            let response = await fetch(`${urlLocal}/user`, 
+            let response = await fetch(`${apiUrl}/user`, 
             { method: 'PATCH', 
                 body: JSON.stringify({ 
                     name: name,
@@ -57,7 +57,7 @@ const ApiConsumer = {
     },
     getUser : async (token) => {
         try {
-            let response = await fetch(`${urlLocal}/user`, 
+            let response = await fetch(`${apiUrl}/user`, 
             { method: 'GET',             
                 headers:{
                     'token': token
@@ -71,7 +71,7 @@ const ApiConsumer = {
     },
     deleteValorations : async () => {
         try {
-            let response = await fetch(`${urlLocal}/valoration/all`, { method: 'DELETE' });
+            let response = await fetch(`${apiUrl}/valoration/all`, { method: 'DELETE' });
             response = await response.json();
             return response;
         } catch (error) {
@@ -80,7 +80,7 @@ const ApiConsumer = {
     },
     deleteUsers : async () => {
         try {
-            let response = await fetch(`${urlLocal}/user/all`, { method: 'DELETE'});
+            let response = await fetch(`${apiUrl}/user/all`, { method: 'DELETE'});
             response = await response.json();
             return response;
         } catch (error) {
@@ -89,7 +89,7 @@ const ApiConsumer = {
     },
     getMoviesByGenre : async ( genre) => {
         try {
-            let response = await fetch(`${urlLocal}/movies/genre`, 
+            let response = await fetch(`${apiUrl}/movies/genre`, 
             { method: 'GET',             
                 headers:{
                     'genre': genre
@@ -103,7 +103,7 @@ const ApiConsumer = {
     },
     getMoviesByActor : async ( actors) => {
         try {
-            let response = await fetch(`${urlLocal}/movies/actors`, 
+            let response = await fetch(`${apiUrl}/movies/actors`, 
             { method: 'GET',             
                 headers:{
                     'actors': actors
@@ -117,7 +117,7 @@ const ApiConsumer = {
     },
     getMoviesByTitle : async ( title) => {
         try {
-            let response = await fetch(`${urlLocal}/movies/title`, 
+            let response = await fetch(`${apiUrl}/movies/title`, 
             { method: 'GET',             
                 headers:{
                     'title': title
@@ -131,7 +131,7 @@ const ApiConsumer = {
     },
     getMoviesByDirector : async ( director) => {
         try {
-            let response = await fetch(`${urlLocal}/movies/director`, 
+            let response = await fetch(`${apiUrl}/movies/director`, 
             { method: 'GET',             
                 headers:{
                     'director': director
@@ -145,7 +145,7 @@ const ApiConsumer = {
     },
     getMoviesById : async (id) => {
         try {
-            let response = await fetch(`${urlLocal}/movies/id`, 
+            let response = await fetch(`${apiUrl}/movies/id`, 
             { method: 'GET',             
                 headers:{
                     'id': id
@@ -159,7 +159,7 @@ const ApiConsumer = {
     },
     getMovies : async () => {
         try {
-            let response = await fetch(`${urlLocal}/movies/`, { method: 'GET' });
+            let response = await fetch(`${apiUrl}/movies/`, { method: 'GET' });
             response = await response.json();
             return response;
         } catch (error) {
@@ -168,7 +168,7 @@ const ApiConsumer = {
     },
     getMoviesSearch : async (value) => {
         try {
-            let response = await fetch(`${urlLocal}/movies/value/`, 
+            let response = await fetch(`${apiUrl}/movies/value/`, 
             { method: 'GET',             
                 headers:{
                     'value': value
@@ -182,7 +182,7 @@ const ApiConsumer = {
     },
     deleteSeed : async () => {
         try {
-            let response = await fetch(`${urlLocal}/movies/all`, { method: 'DELETE' });
+            let response = await fetch(`${apiUrl}/movies/all`, { method: 'DELETE' });
             response = await response.json();
             return response;
         } catch (error) {
@@ -191,7 +191,7 @@ const ApiConsumer = {
     },
     deleteMovie : async (id) => {
         try {
-            let response = await fetch(`${urlLocal}/movies/`,
+            let response = await fetch(`${apiUrl}/movies/`,
             { method: 'DELETE',
              headers: {id:id}
             });
@@ -203,7 +203,7 @@ const ApiConsumer = {
     },
     insertMovie : async (movie) => {
         try {
-            let response = await fetch(`${urlLocal}/movies`, 
+            let response = await fetch(`${apiUrl}/movies`, 
             { method: 'POST', 
             body: JSON.stringify(movie),
             headers:{'Content-Type': 'application/json'}
@@ -216,7 +216,7 @@ const ApiConsumer = {
     },
     updateMovie : async (valoration) => {
         try {
-            let response = await fetch(`${urlLocal}/movies`, 
+            let response = await fetch(`${apiUrl}/movies`, 
             { method: 'PATCH', 
             body: JSON.stringify(valoration),
             headers:{'Content-Type': 'application/json'}
@@ -230,7 +230,7 @@ const ApiConsumer = {
     },
     insertValoration : async (valoration) => {
         try {
-            let response = await fetch(`${urlLocal}/valoration`, 
+            let response = await fetch(`${apiUrl}/valoration`, 
             { method: 'POST', 
             body: JSON.stringify(valoration),
             headers:{'Content-Type': 'application/json'}
@@ -243,7 +243,7 @@ const ApiConsumer = {
     },
     updateValoration : async (valoration) => {
         try {
-            let response = await fetch(`${urlLocal}/valoration`, 
+            let response = await fetch(`${apiUrl}/valoration`, 
             { method: 'PATCH', 
             body: JSON.stringify(valoration),
             headers:{'Content-Type': 'application/json'}
@@ -257,7 +257,7 @@ const ApiConsumer = {
     },
     getValorations : async () => {
         try {
-            let response = await fetch(`${urlLocal}/valoration`, { method: 'GET' });
+            let response = await fetch(`${apiUrl}/valoration`, { method: 'GET' });
             response = await response.json();
             return response;
         } catch (error) {
@@ -266,7 +266,7 @@ const ApiConsumer = {
     },
     getValorationByMovie : async (idMovie) => {
         try {
-            let response = await fetch(`${urlLocal}/valoration/by-movie`, 
+            let response = await fetch(`${apiUrl}/valoration/by-movie`, 
             { method: 'GET',             
                 headers:{
                     'id': idMovie
@@ -280,7 +280,7 @@ const ApiConsumer = {
     },
     getValorationByUser : async (idUser) => {
         try {
-            let response = await fetch(`${urlLocal}/valoration/by-user`, 
+            let response = await fetch(`${apiUrl}/valoration/by-user`, 
             { method: 'GET',             
                 headers:{
                     'id': idUser
@@ -294,7 +294,7 @@ const ApiConsumer = {
     },
     deleteValoration : async (id) => {
         try {
-            let response = await fetch(`${urlLocal}/valoration`, 
+            let response = await fetch(`${apiUrl}/valoration`, 
             { method: 'DELETE',
              headers: {id:id}
             });
