@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import './Header.scss';
 import {getUserAction} from "../../Store/Actions/loginActions.js";
+import {BiCameraMovie} from 'react-icons/bi';
 
 const Header = () => {   
     const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const Header = () => {
             <nav className="navbar">
                 <div className="brand-title">
                     <Link to="./">
-                        <div>Movie Social</div>
+                        <div><BiCameraMovie/>Movie Social</div>
                     </Link>
                 </div>
                 <a href="#" className="toggle-button" onClick={() => {change()}}>

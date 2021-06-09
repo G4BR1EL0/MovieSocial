@@ -19,7 +19,7 @@ const MovieDetailPage = () => {
 
     const user = useSelector(state => state.user);
     const valorate = () => {
-        history.push('/add-valoration');
+        history.push('/addValoration');
     }
     return(
         <div>

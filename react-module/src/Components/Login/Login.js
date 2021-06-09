@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import apiLogin from '../../Store/Services/apiLogin';
 import './Login.scss'
 import Input from '../Input/Input';
+import LargeButton from '../LargeButton/LargeButton';
 
 const Login = () => {        
     const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const Login = () => {
                             name='password'
                         />
                     <div className="login-button">
-                        <button type="submit">Send</button>
+                        <LargeButton text="Send" typeButton="submit"/>
                     </div>
                 </div>
             </form>

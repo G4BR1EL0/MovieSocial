@@ -7,6 +7,7 @@ import BoxMovie from '../BoxMovie/BoxMovie.js';
 import './Searcher.scss'
 import Input from '../Input/Input.js';
 import AddMovie from '../MovieForm/MovieForm.js';
+import LargeButton from '../LargeButton/LargeButton.js';
 
 const Searcher = (props) => {
     let [text, setText] = useState("")
@@ -55,38 +56,29 @@ const Searcher = (props) => {
         dispatch(movieAction({}));
         history.push('/movieForm');
     }
+
     const EditMovie = (movie) => {
         dispatch(movieAction(movie));
         history.push('/movieForm');
-    }
-    const DeleteMovie = async (movie) => {
-        if(window.confirm('Are you sure want to delete Movie?')){
-            let respuesta = await ApiConsumer.deleteMovie(movie._id);
-            if(respuesta){
-                let valorations =await ApiConsumer.getValorationByMovie(movie._id);
-                valorations.respuesta.forEach(async(valoration) => {
-                    await ApiConsumer.deleteValoration(valoration._id);
-                });
-                if(text) searchMovies(text);
-                else popularMovies();
-            }
-        }
     }
     
     return (
         <div className="cntSearch">
             <div className="cntMainS">
                 <div className="boxSearch">
-                    <Input 
-                        type='text'
-                        label='Search..'
-                        setter={setText}    
-                        name='search'
-                    />
-                    {props.crud &&
-                        <button onClick={() => {AddMovie()}}>Add Movie</button>
-                    }
+                    <div className="crud-upper-zone">
+                        {props.crud &&
+                            <LargeButton action={AddMovie} text="Add Movie" />
+                        }
+                        <Input 
+                            type='text'
+                            label='Search..'
+                            setter={setText}    
+                            name='search'
+                        />
+                    </div>
                     <br/>
+                    <p>Select any movie you want to edit or delete</p>
                     <div className="contenedor">
                         {movies.map((movie, index ) => {
                             if(props.crud){
@@ -95,11 +87,9 @@ const Searcher = (props) => {
                                         <BoxMovie 
                                         key={index} 
                                         peli={movie} 
-                                        funcion={detalles} 
+                                        funcion={EditMovie} 
                                         ruta={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} 
                                         tagline={movie.tagline} />
-                                        <button onClick={() => {EditMovie(movie)}}>edit</button>
-                                        <button onClick={() => {DeleteMovie(movie)}}>delete</button>
                                     </div>
                                 )
                             }

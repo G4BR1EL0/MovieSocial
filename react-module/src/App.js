@@ -37,7 +37,7 @@ function App() {
           <Route path="/movieDetail" exact>
             <MovieDetailPage/>
           </Route>
-          <Route path="/add-valoration" exact>
+          <Route path="/addValoration" exact>
             <AddValoration/>
           </Route>
           <Route path="/editValoration" exact>
