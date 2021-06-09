@@ -4,6 +4,7 @@ import { valorationAction } from '../../Store/Actions/valorationAction.js';
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router";
 import ApiConsumer from "../../Util/ApiConsumer";
+import LargeButton from "../LargeButton/LargeButton";
 
 const ValorationCard = (props) => {
     let [editable, setEditable] = useState(props.valoration? true : false);
@@ -36,14 +37,14 @@ const ValorationCard = (props) => {
                 <div className="valoration_title">{props.title}</div>
                 <div><span className="cursive">by </span>"{props.user}"</div>
                 <div>"{props.comment}"</div>
-                <div>{props.stars}</div>                
+                <div>{props.stars}</div>
+                {editable && 
+                <div>
+                    <LargeButton text="Edit" action={editValoration} param={props.valoration}/>
+                    <LargeButton text="Delete" action={deleteValoration} param={props.valoration}/>
+                </div>
+                }                
             </div>
-            {editable && 
-            <div>
-                <button onClick = {() =>{editValoration(props.valoration)}}>edit</button>
-                <button onClick = {() =>{deleteValoration(props.valoration)}}>delete</button>
-            </div>
-            }
         </div>
     )
 }

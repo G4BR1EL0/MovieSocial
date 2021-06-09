@@ -13,10 +13,12 @@
     align-items: center;
     text-align: center;
     color: rgba(255, 255, 255, 0.5);
-    @media (min-width:768px){
-    }    
     @media (min-width:1024px){
     }
+}
+.text-container{
+    padding: 0.5em 1em 0 1em;
+    //position absolute top backgourn gris transparente letras a la izquierda
 }
 .movie-detail-title{
     font-size: 1.3em;

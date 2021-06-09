@@ -1,0 +1,15 @@
+.large-button{
+    margin: 0.1em;
+    width: 8em;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 0.5em 2em 0.5em 2em;
+    border: solid 0.2em rgba(255,255,255,0.3);
+    border-radius: 0.7em;
+    color: rgba(255,255,255,0.3);
+    font-weight: bold;
+}
+.large-button:hover{
+    color:#11998e;
+    border: solid 0.2em #11998e;
+}

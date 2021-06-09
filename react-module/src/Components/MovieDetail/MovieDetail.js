@@ -10,6 +10,7 @@ const MovieDetail = ({movie}) => {
             <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} 
             alt="fondo"/>
         </div>
+        <div className="text-container">
         <div className="movie-detail-title">
             <span>{movie.title && movie.title.toUpperCase()}</span>
         </div>
@@ -45,7 +46,8 @@ const MovieDetail = ({movie}) => {
         </div>
         <div><span className="cursive">Director: </span>{movie.director}</div>
         <div className="enlace">
-            <a href={`https://www.youtube.com/watch?v=${movie.video}`} target="_blank" rel="noreferrer">trailer</a>            
+            <a href={`https://www.youtube.com/watch?v=${movie.video}`} target="_blank" rel="noreferrer">Trailer</a>            
+        </div>
         </div>
         </div>
         </>

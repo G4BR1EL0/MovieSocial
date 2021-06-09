@@ -59,6 +59,7 @@ const ValorationsBox = (props) => {
             {valorations.map((valoration, index) => {
                 if(editable){
                     return(
+                        <div>
                         <ValorationCard 
                         key={index} 
                         recharge = {reload}
@@ -68,9 +69,12 @@ const ValorationsBox = (props) => {
                         user={valoration.user.name} 
                         comment = {valoration.comment}
                         stars = {valoration.stars}/>
+                        <br/>
+                        </div>
                     )
                 }
                 return(
+                    <div>
                     <ValorationCard 
                     key={index} 
                     ruta={valoration.movie.backdrop_path} 
@@ -78,6 +82,8 @@ const ValorationsBox = (props) => {
                     user={valoration.user.name} 
                     comment = {valoration.comment}
                     stars = {valoration.stars}/>
+                    <br/>
+                    </div>
                 )
             })}
         </div>

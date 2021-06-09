@@ -35,33 +35,43 @@ const MovieCarousel = (props) => {
   
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 12,
-      slidesToSlide: 1 
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 950 },
+      breakpoint: { max: 3000, min: 1100 },
       items: 9,
       slidesToSlide: 1 
     },
-    tabletMedium: {
-      breakpoint: { max: 950, min: 750 },
+    tablet: {
+      breakpoint: { max: 1100, min: 100 },
       items: 8,
       slidesToSlide: 1 
     },
+    tabletMedium: {
+      breakpoint: { max: 1000, min: 900 },
+      items: 7,
+      slidesToSlide: 1 
+    },
     tabletMediums: {
-      breakpoint: { max: 750, min: 650 },
+      breakpoint: { max: 900, min: 800 },
       items: 6,
       slidesToSlide: 1 
     },
     tabletSmall: {
-      breakpoint: { max: 650, min: 464 },
-      items: 4,
+      breakpoint: { max: 800, min: 700 },
+      items: 5,
       slidesToSlide: 1 
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 700, min: 600 },
+      items: 4,
+      slidesToSlide: 1 
+    },
+    mobileSmall: {
+      breakpoint: { max: 600, min: 500 },
       items: 3,
+      slidesToSlide: 1 
+    },
+    mobileExtraSmall: {
+      breakpoint: { max: 500, min: 0 },
+      items: 2,
       slidesToSlide: 1 
     }
   }

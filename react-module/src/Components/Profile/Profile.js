@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import './Profile.scss';
 import Input from "../Input/Input";
+import LargeButton from '../LargeButton/LargeButton.js'
 
 const Profile = (props) => {
     let [name, setName] = useState(props.user? props.user.name : ''); 
@@ -53,7 +54,7 @@ const Profile = (props) => {
                         name = 'password'
                     />
                     <div className="register-button">
-                        <button type="submit">Save</button>
+                        <LargeButton text="Save"/>
                     </div>
                 </div>
             </form>
