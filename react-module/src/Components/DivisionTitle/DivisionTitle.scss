@@ -1,0 +1,13 @@
+$primary-color: #11998e;
+.division-title{
+    color: $primary-color;
+    margin: 1.5em;
+    display: flex;
+    align-items: flex-end;
+    width:90%;
+    font-weight: bold;
+    height: 1em;
+    border-bottom: solid $primary-color 0.15em;
+    border-image: linear-gradient(to right, $primary-color,#14181c);
+    border-image-slice: 1;
+}

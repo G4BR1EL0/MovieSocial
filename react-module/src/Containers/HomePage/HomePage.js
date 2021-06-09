@@ -1,12 +1,14 @@
 import React from "react";
+import DivisionTitle from "../../Components/DivisionTitle/DivisionTitle";
 import MovieCarousel from "../../Components/MovieCarousel/MovieCarousel";
 import ValorationCarousel from '../../Components/ValorationCarousel/ValorationCarousel.js';
+
 
 const HomePage = () => {
 
     return(
         <div>
-            <br/>
+            <DivisionTitle text="Popular Movies"/>
             <MovieCarousel/>
             <br/><br/>
             <ValorationCarousel/>

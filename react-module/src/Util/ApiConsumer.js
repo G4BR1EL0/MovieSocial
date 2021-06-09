@@ -1,9 +1,8 @@
 import dotenv from 'dotenv';
 
 dotenv.config();
-//const apiUrl = process.env.REACT_APP_APIURL;
-//const apiUrl = 'https://socialcinema-api.herokuapp.com';
-const apiUrl = 'http://localhost:5000';
+const apiUrl = process.env.REACT_APP_APIURL;
+//const apiUrl = 'http://localhost:5000';
 //Object used to connect to local API and to fetch information
 const ApiConsumer = {
     
