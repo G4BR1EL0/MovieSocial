@@ -3,6 +3,7 @@ import MovieDetail from "../../Components/MovieDetail/MovieDetail.js";
 import { useHistory } from "react-router";
 import ValorationsBox from "../../Components/ValorationsBox/ValorationsBox";
 import { useSelector } from "react-redux";
+import DivisionTitle from '../../Components/DivisionTitle/DivisionTitle.js';
 
 const MovieDetailPage = () => {
     const history = useHistory();
@@ -24,7 +25,8 @@ const MovieDetailPage = () => {
             {user.name && 
                 <button onClick={() => {valorate()}}>Add valoration</button>
             }
-            <ValorationsBox movie={movie._id}/>
+            <DivisionTitle text="Users valorations"/>
+            <ValorationsBox movie={movie._id} userId={null}/>
         </div>
     )
 }

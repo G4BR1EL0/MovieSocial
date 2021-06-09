@@ -5,36 +5,23 @@
     align-items: center;
     width: 100%;
     min-height: 100%;
-
-    @media (min-width:768px){          
-    }
-    @media (min-width:1024px){
-    }
+    
 
     .cntMainS{
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        @media (min-width:768px){    
-        }
-        @media (min-width:1024px){
-        }
         .boxSearch{
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 19em;
-            @media (min-width:768px){
-                width: 35em;
-            }
-    
-            @media (min-width:1024px){
-                width: 46em;
-            }
+            width: 90%;
             .contenedor{
                 display: flex;
+                align-items: center;
+                justify-content: center;
                 flex-direction: row;
                 flex-wrap: wrap;
             }

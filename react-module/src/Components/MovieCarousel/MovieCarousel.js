@@ -10,9 +10,18 @@ import { movieAction } from '../../Store/Actions/movieActions.js';
 const MovieCarousel = (props) => {
 
   let [movies, setMovies] = useState([]);
+  let buscar;
+  let filtro='';
+  if(props.genre){
+    buscar = ApiConsumer.getMoviesByGenre;
+    filtro=props.genre;
+  }
+  else{
+    buscar = ApiConsumer.getMovies;
+  }
   useEffect(() => {
       const getMovies = async() => {
-          let result= await ApiConsumer.getMovies();
+          let result= await buscar(filtro);
           setMovies(result);
       }      
       getMovies();  

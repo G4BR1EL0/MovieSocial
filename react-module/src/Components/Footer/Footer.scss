@@ -5,16 +5,16 @@ html {
 
 body {
     margin: 0;
-    margin-bottom: 10em;
+    margin-bottom: 8em;
 }
 .footer{
+    
     display: flex;
     height: 6em;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
-    background-color: black; 
     bottom: 0;
     width: 100%;
 
@@ -25,7 +25,23 @@ body {
         align-items: center;
         justify-content: center;
         text-align: center;
-        color: white;
+        color: #11998e;
+        margin-bottom: 0.3em;
+    }
+    .enlaces{
+        box-sizing: content-box;
+        width: 2.5em;
+        height: 1.5em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .enlaces a{
+        text-decoration: none !important;
+        color: #11998e;
+    }
+    .enlaces a:hover{
+        font-size: 1.1em;
     }
 }
 

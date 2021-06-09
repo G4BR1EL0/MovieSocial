@@ -10,8 +10,14 @@ const HomePage = () => {
         <div>
             <DivisionTitle text="Popular Movies"/>
             <MovieCarousel/>
-            <br/><br/>
+            <DivisionTitle text="Recent Valorations"/>
             <ValorationCarousel/>
+            <DivisionTitle text="Comedy"/>
+            <MovieCarousel genre="comedy"/>
+            <DivisionTitle text="Action"/>
+            <MovieCarousel genre="action"/>
+            <DivisionTitle text="Adventure"/>
+            <MovieCarousel genre="adventure"/>
         </div>
            
     )

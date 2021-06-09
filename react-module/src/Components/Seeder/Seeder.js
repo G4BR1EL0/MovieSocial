@@ -1,6 +1,7 @@
 import React from "react";
 import ApiConsumer from "../../Util/ApiConsumer";
 import './Seeder.scss';
+import {ImDatabase} from 'react-icons/im';
 
 
 const Seeder = () => {
@@ -126,6 +127,7 @@ const Seeder = () => {
     }
     return(
         <div className="seed-container">
+            <div className="seed-icon"><ImDatabase/></div>
             <div className="seed-pulsable" onClick={() => { seeder()}}>
                 <span>USE SEED</span>
             </div>
