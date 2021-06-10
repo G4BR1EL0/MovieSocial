@@ -1,70 +1,65 @@
 # Front-end Module of Movie Social
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Front-end module developed as the fianl proyect of the GeeksHubs fullstack Bootcamp Madrid 2021
 
-In the project directory, you can run:
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/75450403/121583582-bba00700-ca30-11eb-8bbf-3c75c2102ae1.gif)
+
+
+
+## Getting started
+
+To beging to use this proyect the first step is to run
+
+### `npm install`
+
+Then to beging the application the Back-end module must be up and runnig, To see the back-end module repository click [HERE](https://github.com/G4BR1EL0/MovieSocial/tree/main/api). If the Api is runnig localy the app can start with the comand :
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+###  Users
+    
+   Resgiter, Login and Profile editing to any user.
+    
+   ![image](https://user-images.githubusercontent.com/75450403/121586433-f2c3e780-ca33-11eb-93ae-1179a076f11f.png)
+   
+   Movie Searching, Movie Detail, and Movies Valoration to any user.
+   
+   ![image](https://user-images.githubusercontent.com/75450403/121587483-294e3200-ca35-11eb-9fa0-31bbb966c06f.png)
+  
+   Create, Edit and Delete Movie Valorations only to logged in users.
+   
+   ![image](https://user-images.githubusercontent.com/75450403/121587918-995cb800-ca35-11eb-9501-8cd98143e97d.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Administrator
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  Seed activation: restarts the database with 184 movies from theMovieDB API , 20 dummy Movies Valorations and 
+  2 users 
+  
+  `{`
+  
+      `{'name' : 'user', 'email':'user@mail.com', 'password':'user'},` 
+  
+      `{'name' : 'admin', 'email':'admin@mail.com', 'password':'admin'}`
+      
+   `}`
+   
+  The admin user is the only posible admin and has the options of creating, editing and deleting movies
+  
+  ![image](https://user-images.githubusercontent.com/75450403/121589465-61567480-ca37-11eb-84f0-56dd35c154c7.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tecnology
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Reactjs
+- Scss styles
+- Redux
+- Redux Dev tools
+- Thunk Middleware to  handle the login asincronous process
+- Varios libraries (react-router-dom, react-icons, dotenv, react-multi-carousel)
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   
