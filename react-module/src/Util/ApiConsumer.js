@@ -230,6 +230,7 @@ const ApiConsumer = {
             body: JSON.stringify(valoration),
             headers:{'Content-Type': 'application/json', token : token}
             });
+            console.log(response)
             response = await response.json();
             console.log(response);
             return response;
