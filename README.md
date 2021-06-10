@@ -2,7 +2,7 @@
 
 # Movie Social
 
-###Final proyect of the fullstack bootcamp of GeeksHubs
+##Final proyect of the fullstack bootcamp of GeeksHubs
 This proyect has been set with a deadline of 15 days. To fullfil this proyect is necesary to create an aplication whit an API and front end module. The front-end module is made with Reactjs and the API is made with Nodejs, Expressjs and MongoDB so the full proyect follows the MERN stack.
 
 To see the front-end module repository click [HERE](https://github.com/G4BR1EL0/MovieSocial/tree/main/react-module).
