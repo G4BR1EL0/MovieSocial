@@ -8,6 +8,7 @@ import Input from "../Input/Input";
 import LargeButton from '../LargeButton/LargeButton.js'
 
 const Profile = (props) => {
+    const token = useSelector(state => state.token);
     let [name, setName] = useState(props.user? props.user.name : ''); 
     let [email, setEmail] = useState(props.user? props.user.email : '');
     let [password, setPassword] = useState(props.user? props.user.password : '');
@@ -15,13 +16,12 @@ const Profile = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(name, email, password);
-        let respuesta = await ApiConsumer.updateUser(props.user._id, name, email, password);
+        let respuesta = await ApiConsumer.updateUser(props.user._id, name, email, password, token.jwt);
         console.log(respuesta)
     }    
 
     const history = useHistory();
-    const token = useSelector(state => state.token.jwt);
-    if (!token) {
+    if (!token.jwt) {
         history.push('/');
     }
     

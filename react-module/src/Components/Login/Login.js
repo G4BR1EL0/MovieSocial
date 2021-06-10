@@ -9,16 +9,18 @@ import LargeButton from '../LargeButton/LargeButton';
 const Login = () => {        
     const dispatch = useDispatch();
     const history = useHistory();
-
+    const token = useSelector(state => state.token);
     let [email, setEmail] = useState("");
-    let [password, setPassword] = useState("");    
+    let [password, setPassword] = useState("");  
+    let [error, setError] = useState(false)  
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if(token.error) setError(true);
         dispatch(apiLogin(email, password));        
     }
-    const token = useSelector(state => state.token.jwt);
-    if (token) {
+    
+    if (token.jwt) {
         history.push('/');
     }
 
@@ -41,6 +43,8 @@ const Login = () => {
                             setter={setPassword}    
                             name='password'
                         />
+                        {error &&
+                        <p className="error">Wrong credentials</p>}
                     <div className="login-button">
                         <LargeButton text="Send" typeButton="submit"/>
                     </div>

@@ -3,18 +3,20 @@ import ApiConsumer from "../../Util/ApiConsumer";
 import './Seeder.scss';
 import {ImDatabase} from 'react-icons/im';
 import { LoremIpsum } from "lorem-ipsum";
+import { useSelector } from "react-redux";
 
 
 const Seeder = () => {
+    const token = useSelector(state => state.token);
     const seeder = () => {
         borrar();
         insertarSeed()
     }
 
     const borrar = async () => {       
-        let response1 = await ApiConsumer.deleteSeed();
-        let response2 = await ApiConsumer.deleteUsers(); 
-        let response3 = await ApiConsumer.deleteValorations(); 
+        let response1 = await ApiConsumer.deleteSeed(token.jwt);
+        let response2 = await ApiConsumer.deleteUsers(token.jwt); 
+        let response3 = await ApiConsumer.deleteValorations(token.jwt); 
         console.log(response1);
         console.log(response2);
         console.log(response3);
@@ -78,7 +80,7 @@ const Seeder = () => {
             }) 
             movie.cast = actores;  
             
-            let response = await ApiConsumer.insertMovie(movie);
+            let response = await ApiConsumer.insertMovie(movie, token.jwt);
             console.log(response);
             
             }
@@ -130,7 +132,7 @@ const Seeder = () => {
                 valoration.user = user.user._id;
                 valoration.comment = text;
                 valoration.stars = 4;
-                let response = await ApiConsumer.insertValoration(valoration);
+                let response = await ApiConsumer.insertValoration(valoration, token.jwt);
                 console.log(response);
             })
         }

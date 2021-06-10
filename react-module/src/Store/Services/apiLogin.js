@@ -12,8 +12,6 @@ const apiLogin = (email, password) => {
                 }
                 if(results.token){ 
                     dispatch(loginAction(results.token));
-                    // let user = await ApiConsumer.getUser(results.token);
-                    // if(user) dispatch(getUserAction(user.respuesta))
                     dispatch(getUserAction(results.user));
                 }
                 return;

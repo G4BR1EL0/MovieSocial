@@ -11,10 +11,18 @@ const Register = () => {
     let [name, setName] = useState("");
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
+    let [error, setError] = useState("");
     
     const history = useHistory();
     const handleSubmit = async (e) => {
         e.preventDefault();
+        let response = await ApiConsumer.getUser(email);
+        console.log(response)
+        if(response.respuesta){
+            console.log(response)
+            setError('Email already in use')
+            return;
+        }
         let respuesta = await ApiConsumer.register(name, email, password);
         if (respuesta) history.push('/login');
     }    
@@ -50,6 +58,7 @@ const Register = () => {
                         setter={setPassword}    
                         name='password'
                     />
+                    <span className="error">{error}</span>
                     <div className="register-button">
                         <LargeButton text="Send" typeButton="submit"/>
                     </div>

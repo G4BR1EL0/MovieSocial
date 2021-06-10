@@ -10,6 +10,7 @@ import DivisionTitle from '../DivisionTitle/DivisionTitle.js';
 
 const MovieForm = () => {
     const movie = useSelector(state => state.movie);
+    const token = useSelector(state => state.token);
 
     let [editable, setEditable] = useState(movie.title? true : false);
     let [title, setTitle] = useState(movie.title? movie.title : '');
@@ -47,21 +48,24 @@ const MovieForm = () => {
         }
         let respuesta;
         if(movie.title){
-            respuesta = await ApiConsumer.updateMovie(movieValue); 
+            respuesta = await ApiConsumer.updateMovie(movieValue, token.jwt); 
         }
         else{
-            respuesta = await ApiConsumer.insertMovie(movieValue); 
+            respuesta = await ApiConsumer.insertMovie(movieValue, token.jwt); 
         }
 
         if (respuesta){
             history.push('/moviesCrud');
         };     
     }
+    const goBack = () => {
+        history.push('/moviesCrud');
+    }
 
 
-    const DeleteMovie = async (movie) => {
+    const deleteMovie = async (movie) => {
         if(window.confirm('Are you sure want to delete Movie?')){
-            let respuesta = await ApiConsumer.deleteMovie(movie._id);
+            let respuesta = await ApiConsumer.deleteMovie(movie._id, token.jwt);
             if(respuesta){
                 let valorations =await ApiConsumer.getValorationByMovie(movie._id);
                 valorations.respuesta.forEach(async(valoration) => {
@@ -99,7 +103,8 @@ const MovieForm = () => {
                 name = 'tagline'
             />
             </div>
-            <p>To insert a backdrop image you must use the url of The Movie DB Api. Example: 'https://image.tmdb.org/t/p/original(insert this part of the url)'</p>
+            <p> To insert a backdrop image you must use the url of The Movie DB Api. 
+                Example: 'https://image.tmdb.org/t/p/original(insert this part of the url)'</p>
             <div className="form-input">
             <Input 
                 type = 'text'
@@ -147,7 +152,8 @@ const MovieForm = () => {
                 name = 'overview'
             ></TextArea>
             </div>
-            <p>To insert a poster image you must use the url of The Movie DB Api. Example: 'https://image.tmdb.org/t/p/original( insert this part of the url)'</p>
+            <p>To insert a poster image you must use the url of The Movie DB Api. 
+                Example: 'https://image.tmdb.org/t/p/original( insert this part of the url)'</p>
             <div className="form-input">
             <Input 
                 type = 'text'
@@ -157,7 +163,8 @@ const MovieForm = () => {
                 name = 'posterpath'
             />
             </div>
-            <p>To insert a trailer video you must use the url of youtube. Example: 'https://www.youtube.com/watch?v=(insert this part of the url)'</p>
+            <p>To insert a trailer video you must use the url of youtube. 
+                Example: 'https://www.youtube.com/watch?v=(insert this part of the url)'</p>
             <div className="form-input">
             <Input 
                 type = 'text'
@@ -171,8 +178,9 @@ const MovieForm = () => {
             <div>
                 <LargeButton typeButton="submit" text="Save" />
                 {editable &&
-                <LargeButton action={DeleteMovie} param={movie} text="Delete" />
+                <LargeButton action={deleteMovie} param={movie} text="Delete" />
                 }
+                <LargeButton text="Return" action={goBack}/>
             </div>
         </form>
         </div>

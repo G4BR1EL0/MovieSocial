@@ -38,7 +38,7 @@ const ApiConsumer = {
             console.log(error);
         }
     },
-    updateUser : async (id, name, email, password, admin = false) => {
+    updateUser : async (id, name, email, password, token, admin = false) => {
         try {
             let response = await fetch(`${apiUrl}/user`, 
             { method: 'PATCH', 
@@ -48,6 +48,7 @@ const ApiConsumer = {
                     password: password,
                     admin: admin}),
                 headers:{id:id,
+                    token:token,
                     'Content-Type': 'application/json'}
             });
             response = await response.json();
@@ -56,12 +57,12 @@ const ApiConsumer = {
             console.log(error);
         }
     },
-    getUser : async (token) => {
+    getUser : async (email) => {
         try {
             let response = await fetch(`${apiUrl}/user`, 
             { method: 'GET',             
                 headers:{
-                    'token': token
+                    'email': email
                 }
             });
             response = await response.json();
@@ -70,18 +71,22 @@ const ApiConsumer = {
             console.log(error);
         }
     },
-    deleteValorations : async () => {
+    deleteValorations : async (token) => {
         try {
-            let response = await fetch(`${apiUrl}/valoration/all`, { method: 'DELETE' });
+            let response = await fetch(`${apiUrl}/valoration/all`, { method: 'DELETE' ,
+            headers:{'Content-Type': 'application/json', 'token':token}});
             response = await response.json();
             return response;
         } catch (error) {
             console.log(error);
         }
     },
-    deleteUsers : async () => {
+    deleteUsers : async (token) => {
         try {
-            let response = await fetch(`${apiUrl}/user/all`, { method: 'DELETE'});
+            let response = await fetch(`${apiUrl}/user/all`, { 
+                method: 'DELETE',
+                headers:{token:token,
+                'Content-Type': 'application/json'}});
             response = await response.json();
             return response;
         } catch (error) {
@@ -181,20 +186,23 @@ const ApiConsumer = {
             console.log(error);
         }
     },
-    deleteSeed : async () => {
+    deleteSeed : async (token) => {
         try {
-            let response = await fetch(`${apiUrl}/movies/all`, { method: 'DELETE' });
+            let response = await fetch(`${apiUrl}/movies/all`, { method: 'DELETE',
+             headers:{
+                token:token,
+                'Content-Type': 'application/json'}});
             response = await response.json();
             return response;
         } catch (error) {
             console.log(error);
         }
     },
-    deleteMovie : async (id) => {
+    deleteMovie : async (id, token) => {
         try {
             let response = await fetch(`${apiUrl}/movies/`,
             { method: 'DELETE',
-             headers: {id:id}
+             headers: {id:id, token:token}
             });
             response = await response.json();
             return response;
@@ -202,12 +210,12 @@ const ApiConsumer = {
             console.log(error);
         }
     },
-    insertMovie : async (movie) => {
+    insertMovie : async (movie, token) => {
         try {
             let response = await fetch(`${apiUrl}/movies`, 
             { method: 'POST', 
             body: JSON.stringify(movie),
-            headers:{'Content-Type': 'application/json'}
+            headers:{'Content-Type': 'application/json', token:token}
             });
             response = await response.json();
             return response;
@@ -215,12 +223,12 @@ const ApiConsumer = {
             console.log(error);
         }
     },
-    updateMovie : async (valoration) => {
+    updateMovie : async (valoration, token) => {
         try {
             let response = await fetch(`${apiUrl}/movies`, 
             { method: 'PATCH', 
             body: JSON.stringify(valoration),
-            headers:{'Content-Type': 'application/json'}
+            headers:{'Content-Type': 'application/json', token : token}
             });
             response = await response.json();
             console.log(response);
@@ -229,12 +237,12 @@ const ApiConsumer = {
             console.log(error);
         }
     },
-    insertValoration : async (valoration) => {
+    insertValoration : async (valoration, token) => {
         try {
             let response = await fetch(`${apiUrl}/valoration`, 
             { method: 'POST', 
             body: JSON.stringify(valoration),
-            headers:{'Content-Type': 'application/json'}
+            headers:{'Content-Type': 'application/json', 'token':token}
             });
             response = await response.json();
             return response;
@@ -242,12 +250,12 @@ const ApiConsumer = {
             console.log(error);
         }
     },
-    updateValoration : async (valoration) => {
+    updateValoration : async (valoration, token) => {
         try {
             let response = await fetch(`${apiUrl}/valoration`, 
             { method: 'PATCH', 
             body: JSON.stringify(valoration),
-            headers:{'Content-Type': 'application/json'}
+            headers:{'Content-Type': 'application/json', 'token':token}
             });
             response = await response.json();
             console.log(response);
@@ -293,11 +301,11 @@ const ApiConsumer = {
             console.log(error);
         }
     },
-    deleteValoration : async (id) => {
+    deleteValoration : async (id,token) => {
         try {
             let response = await fetch(`${apiUrl}/valoration`, 
             { method: 'DELETE',
-             headers: {id:id}
+             headers: {id:id, token:token}
             });
             response = await response.json();
             return response;

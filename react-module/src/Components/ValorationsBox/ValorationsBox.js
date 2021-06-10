@@ -16,13 +16,9 @@ const ValorationsBox = (props) => {
     if(props.userId){
         search = ApiConsumer.getValorationByUser;
         data = props.userId;
-        //si el usuario es el logado colocar boton editar y eliminar
-        //al hacer click en editar incluir valoracion en el store con los datos necesarios
-        //al hacer click en eliminar borrar la valoracion y recargar las valoraciones
     }else if(props.movie){
         search = ApiConsumer.getValorationByMovie;
         data = props.movie;
-        //setData(props.movie);
     } else {
         search = ApiConsumer.getValorations;
     }
@@ -56,7 +52,8 @@ const ValorationsBox = (props) => {
 
     return(
         <div className="box-container">            
-            {valorations.map((valoration, index) => {
+            {valorations.length >=1 &&
+            valorations.map((valoration, index) => {
                 if(editable){
                     return(
                         <div key={index}>
@@ -88,6 +85,9 @@ const ValorationsBox = (props) => {
                     </div>
                 )
             })}
+            {valorations.length ===0 &&
+                <p>Create a valoration</p>
+            }
         </div>
     )
 }

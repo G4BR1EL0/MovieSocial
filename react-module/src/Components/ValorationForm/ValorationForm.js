@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ApiConsumer from "../../Util/ApiConsumer";
 import { useHistory } from "react-router";
@@ -13,6 +13,7 @@ const ValorationForm = () => {
     const valoration = useSelector(state => state.valoration);
     const user = useSelector(state => state.user);
     const movie = useSelector(state => state.movie);
+    const token = useSelector(state => state.token);
     
     const history = useHistory();
     let [editable, setEditable] = useState(valoration.comment? true : false); 
@@ -31,13 +32,28 @@ const ValorationForm = () => {
           
         let respuesta 
         if(valoration._id)
-            respuesta= await ApiConsumer.updateValoration(valorationAdd); 
+            respuesta= await ApiConsumer.updateValoration(valorationAdd, token.jwt); 
         else
-            respuesta= await ApiConsumer.insertValoration(valorationAdd); 
+            respuesta= await ApiConsumer.insertValoration(valorationAdd, token.jwt); 
 
         if (respuesta){
             history.push('/profile');
         };     
+    }
+    const deleteValoration = async (valoration) => {
+        if(window.confirm('Are you sure want to delete Movie?')){
+            let respuesta = await ApiConsumer.deleteValoration(valoration._id, token.jwt);
+            if(respuesta){
+                history.push('/profile');
+            }
+        }
+    }
+    
+    const goBack = () => {
+        history.push('/profile');
+    }
+    const goBackDetail = () => {
+        history.push('/movieDetail');
     }
 
     return(
@@ -70,6 +86,18 @@ const ValorationForm = () => {
             <br/>
             <div className="valoration-form-button">
                 <LargeButton typeButton="submit" text="Save"/>  
+                {editable &&
+                <>
+                    <LargeButton action={deleteValoration} param={valoration} text="Delete" />
+                    <LargeButton text="Return" action={goBack}/>
+                </>
+                } 
+                {!editable &&
+                <>
+                    <LargeButton text="Return" action={goBackDetail}/>
+                </>
+                } 
+                
             </div>
         </form>
         </div>
