@@ -5,7 +5,6 @@ dotenv.config();
 
 const adminAuth = async (req, res, next) => {
     const info = jwt.decode(req.headers.token);
-    console.log(info, "qwertyyyyyyyyyyyyyyyyyyyyyyyyyy");
     if(info.respuesta.admin){
         next();
     }else{
