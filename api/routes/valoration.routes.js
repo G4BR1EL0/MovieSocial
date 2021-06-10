@@ -8,13 +8,10 @@ const valorationRoutes = Router();
 valorationRoutes.get("/", valorationController.list);
 valorationRoutes.get("/by-user", valorationController.listByUser);
 valorationRoutes.get("/by-movie", valorationController.listByMovie);
-valorationRoutes.post("/", valorationController.create);
-valorationRoutes.patch("/", valorationController.update);
-valorationRoutes.delete("/", valorationController.delete);
-valorationRoutes.delete("/all", valorationController.deleteAll);
+valorationRoutes.post("/",checkJWT, valorationController.create);
+valorationRoutes.patch("/",checkJWT, valorationController.update);
+valorationRoutes.delete("/",checkJWT, valorationController.delete);
+valorationRoutes.delete("/all",adminAuth, valorationController.deleteAll);
 
-// valorationRoutes.post("/", checkJWT, valorationController.create);
-// valorationRoutes.patch("/", checkJWT, valorationController.update);
-// valorationRoutes.delete("/:id", adminAuth, valorationController.delete);
 
 export default valorationRoutes;

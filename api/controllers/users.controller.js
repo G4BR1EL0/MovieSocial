@@ -5,7 +5,7 @@ dotenv.config();
 
 export const userController = {
     list: async (req,res) => {
-        let respuesta = await User.find();
+        let respuesta = await User.findOne({email:req.headers.email});
         res.json({respuesta});
     },
     login: async (req,res) => {

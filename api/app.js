@@ -17,7 +17,7 @@ app.use(express.json());
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Request-Headers', '*');
-    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method, token, genre, actors, title, director, id, movieId, userID, value');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method, token, genre, actors, title, director, id, movieId, userID, value, email');
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE, PATCH ');
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE, PATCH');
     next();
@@ -29,6 +29,6 @@ app.use('/valoration', valorationRoutes);
 app.use('/user', userRoutes); 
 app.use('/movies', movieRoutes);
 
-app.listen(process.env.PUERTO, () => {
+app.listen(process.env.PORT, () => {
     console.log(`web server running on port ${process.env.PUERTO}`);
 });

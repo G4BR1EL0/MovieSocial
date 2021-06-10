@@ -8,7 +8,7 @@ export const valorationController = {
         let respuesta = await Valoration.find()
                                         .populate('user')
                                         .populate('movie')
-                                        .sort('-_id');
+                                        .sort('-_id').limit(20);
         res.json({respuesta});
     },
     listByUser: async (req,res) => {
@@ -52,7 +52,5 @@ export const valorationController = {
                         {$set:{comment:req.body.comment, stars:req.body.stars}})
         console.log(respuesta);
         res.send(respuesta);
-        //.findOneAndUpdate({matchQuery},
-        //{$set: updateData}, {useFindAndModify: false})
     }
 }
