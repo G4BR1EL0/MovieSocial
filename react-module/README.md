@@ -1,7 +1,7 @@
 # Front-end Module of Movie Social
 
 
-Front-end module developed as the fianl proyect of the GeeksHubs fullstack Bootcamp Madrid 2021
+Front-end module developed as the fianl proyect of the GeeksHubs fullstack Bootcamp Madrid 2021. Click [HERE](https://github.com/G4BR1EL0/MovieSocial/tree/main/react-module) to see the application deployed.
 
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/75450403/121583582-bba00700-ca30-11eb-8bbf-3c75c2102ae1.gif)
