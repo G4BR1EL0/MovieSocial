@@ -114,7 +114,7 @@ const MovieForm = () => {
                 name = 'backdrop_path'
             />
             </div>
-            <p>To insert the members of the cast all names must be separeted by ',' </p>
+            <p>To insert the members of the cast all names must be separated by ',' </p>
             <div className="form-input">
             <TextArea 
                 type = 'text'
@@ -124,7 +124,7 @@ const MovieForm = () => {
                 name = 'cast'
             ></TextArea>
             </div>
-            <p>To insert the genres of the movie all genres must be separeted by ',' </p>
+            <p>To insert the genres of the movie all genres must be separated by ',' </p>
             <div className="form-input">
             <Input 
                 type = 'text'
@@ -174,7 +174,7 @@ const MovieForm = () => {
                 name = 'video'
             />
             </div>
-            <p>All filds are required</p>
+            <p>All fields are required</p>
             <div>
                 <LargeButton typeButton="submit" text="Save" />
                 {editable &&
