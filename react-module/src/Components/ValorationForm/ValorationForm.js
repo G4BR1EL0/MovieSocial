@@ -3,61 +3,76 @@ import { useSelector } from "react-redux";
 import ApiConsumer from "../../Util/ApiConsumer";
 import { useHistory } from "react-router";
 import TextArea from "../TextArea/TextArea";
+import LargeButton from "../LargeButton/LargeButton";
+import DivisionTitle from "../DivisionTitle/DivisionTitle";
+import StarRatingComponent from 'react-star-rating-component';
+import './ValorationForm.scss'
 
 
 const ValorationForm = () => {
     const valoration = useSelector(state => state.valoration);
-    const history = useHistory();
-    let [comment, setComment] = useState(''); 
-    let [stars, setStars] = useState(0); 
-    useEffect(() => {
-        setComment(valoration.comment);
-        setStars(valoration.stars);
-    }, []);
+    const user = useSelector(state => state.user);
+    const movie = useSelector(state => state.movie);
     
+    const history = useHistory();
+    let [editable, setEditable] = useState(valoration.comment? true : false); 
+    let [comment, setComment] = useState(valoration.comment? valoration.comment:''); 
+    let [stars, setStars] = useState(valoration.stars? valoration.stars : 0); 
+    if(!movie.title)
+        history.push('/');
     const handleSubmit = async (e) => {
         e.preventDefault();
         let valorationAdd = {};
-        valorationAdd.id = valoration._id;
-        valorationAdd.movie = valoration.movie._id;
-        valorationAdd.user = valoration.user._id;
+        valorationAdd.id = valoration._id? valoration._id : '';
+        valorationAdd.movie = movie._id;
+        valorationAdd.user = user._id;
         valorationAdd.comment = comment;
         valorationAdd.stars = stars;
           
-        let respuesta = await ApiConsumer.updateValoration(valorationAdd); 
+        let respuesta 
+        if(valoration._id)
+            respuesta= await ApiConsumer.updateValoration(valorationAdd); 
+        else
+            respuesta= await ApiConsumer.insertValoration(valorationAdd); 
+
         if (respuesta){
             history.push('/profile');
-            //llevar a profile y mostrar la ultima valoracion más visible que el resto 
-            //mensaje exito
         };     
     }
-    //texare con el contenido de la valoracion, un campo con la cantidad de estrellas
-    //insertar los campos de la valoracion
-    //usar el user y la movie del store
-    //al incluir una valoracion, vaciar el textaera las estrellas y dar mensaje de exito
 
     return(
+        <div className="valoration-form-container">
         <form onSubmit={handleSubmit}>
-            <div>{valoration.movie.title} </div>
-            <TextArea
-                placeholder="write your valoration here"
-                name="valoration"
-                value= {comment}
-                setter={setComment}
-             />
-            <div>
-                <input 
-                    className ="estrellas"
-                    type="number"
-                    name="stars"
+            {editable && 
+                <DivisionTitle text={"Edit valoration of " + valoration.movie.title} />
+            }
+            {!editable && 
+                <DivisionTitle text={"Add valoration of " + movie.title} />
+            }
+            <div className="container-stars">
+                <StarRatingComponent
+                    className={"stars"}
+                    name="rate1" 
+                    starCount={5}
                     value={stars}
-                    onChange = {e => {setStars(e.target.value)}}
-                    required
-                     >
-                </input>
+                    starColor='#38ef7d'
+                    onStarClick={(nextValue, prevValue, nname) => { setStars(nextValue)}}
+                 />
             </div>
-            <div><button type="submit">Save</button></div>
+            <div className="text-area-container">
+                <TextArea
+                    label="write your valoration here"
+                    name="valoration"
+                    value= {comment}
+                    setter={setComment}
+                />
+             </div>
+            <br/>
+            <div className="valoration-form-button">
+                <LargeButton typeButton="submit" text="Save"/>  
+            </div>
         </form>
+        </div>
     )
 }
 

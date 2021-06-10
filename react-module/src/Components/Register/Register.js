@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './Register.scss';
 import Input from "../Input/Input";
+import LargeButton from "../LargeButton/LargeButton";
 
 const Register = () => {
     let [name, setName] = useState("");
@@ -50,7 +51,7 @@ const Register = () => {
                         name='password'
                     />
                     <div className="register-button">
-                        <button type="submit">Send</button>
+                        <LargeButton text="Send" typeButton="submit"/>
                     </div>
                 </div>
             </form>

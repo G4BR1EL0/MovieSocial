@@ -59,9 +59,10 @@ const ValorationsBox = (props) => {
             {valorations.map((valoration, index) => {
                 if(editable){
                     return(
-                        <div>
+                        <div key={index}>
                         <ValorationCard 
                         key={index} 
+                        fecha={valoration.datetime}
                         recharge = {reload}
                         valoration = {valoration}
                         ruta={valoration.movie.backdrop_path} 
@@ -74,9 +75,10 @@ const ValorationsBox = (props) => {
                     )
                 }
                 return(
-                    <div>
+                    <div key={index}>
                     <ValorationCard 
                     key={index} 
+                    fecha={valoration.datetime}
                     ruta={valoration.movie.backdrop_path} 
                     title={valoration.movie.title.toUpperCase()}
                     user={valoration.user.name} 

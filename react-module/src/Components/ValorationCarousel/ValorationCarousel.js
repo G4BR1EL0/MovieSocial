@@ -71,6 +71,7 @@ const ValorationCarousel = (props) => {
             return(
                 <ValorationCard 
                 key={index} 
+                fecha={valoration.datetime}
                 ruta={valoration.movie.backdrop_path} 
                 title={valoration.movie.title.toUpperCase()}
                 user={valoration.user.name} 

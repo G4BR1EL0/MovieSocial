@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import MovieDetail from "../../Components/MovieDetail/MovieDetail.js";
 import { useHistory } from "react-router";
 import ValorationsBox from "../../Components/ValorationsBox/ValorationsBox";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 import DivisionTitle from '../../Components/DivisionTitle/DivisionTitle.js';
 import LargeButton from '../../Components/LargeButton/LargeButton.js';
+import { valorationAction } from '../../Store/Actions/valorationAction.js';
 import './MovieDetailPage.scss'
 
 const MovieDetailPage = () => {
@@ -18,8 +19,10 @@ const MovieDetailPage = () => {
     
 
     const user = useSelector(state => state.user);
+    const dispatch = useDispatch();
     const valorate = () => {
-        history.push('/addValoration');
+        dispatch(valorationAction({}));
+        history.push('/valorationForm');
     }
     return(
         <div>

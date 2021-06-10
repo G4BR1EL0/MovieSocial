@@ -8,11 +8,10 @@ import SearchPage from './Containers/SearchPage/SearchPage';
 import ProfilePage from './Containers/ProfilePage/ProfilePage';
 import Seeder from './Components/Seeder/Seeder.js';
 import MovieDetailPage from './Containers/MovieDetailPage/MovieDetailPage';
-import AddValoration from './Components/AddValoration/AddValoration';
-import EditValoration from './Components/EditValoration/EditValoration.js';
 import { Footer } from './Components/Footer/Footer';
 import MovieForm from './Components/MovieForm/MovieForm.js';
 import MovieCrudPage from './Containers/MovieCrudPage/MovieCrudPage';
+import ValorationForm from './Components/ValorationForm/ValorationForm';
 
 
 
@@ -37,11 +36,8 @@ function App() {
           <Route path="/movieDetail" exact>
             <MovieDetailPage/>
           </Route>
-          <Route path="/addValoration" exact>
-            <AddValoration/>
-          </Route>
-          <Route path="/editValoration" exact>
-            <EditValoration/>
+          <Route path="/valorationForm" exact>
+            <ValorationForm/>
           </Route>
           <Route path="/profile" exact>
             <ProfilePage/>

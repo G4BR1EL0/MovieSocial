@@ -2,6 +2,7 @@ import React from "react";
 import ApiConsumer from "../../Util/ApiConsumer";
 import './Seeder.scss';
 import {ImDatabase} from 'react-icons/im';
+import { LoremIpsum } from "lorem-ipsum";
 
 
 const Seeder = () => {
@@ -105,17 +106,29 @@ const Seeder = () => {
             console.log(e);
         }
     }
-    
+
+    const lorem = new LoremIpsum({
+        sentencesPerParagraph: {
+            max: 3,
+            min: 1
+        },
+        wordsPerSentence: {
+            max: 7,
+            min: 3
+        }
+    });
+
     const insertarValoraciones = async () => {
         try{
             let movies = await ApiConsumer.getMovies();
             let user = await ApiConsumer.login("user@mail.com", "user");
             console.log(user)
             movies.forEach(async (movie, index) => {
+                let text = lorem.generateParagraphs(1);
                 let valoration = {};
                 valoration.movie = movie._id;
                 valoration.user = user.user._id;
-                valoration.comment = `valoration number ${index}`;
+                valoration.comment = text;
                 valoration.stars = 4;
                 let response = await ApiConsumer.insertValoration(valoration);
                 console.log(response);

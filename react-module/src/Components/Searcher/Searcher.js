@@ -78,7 +78,9 @@ const Searcher = (props) => {
                         />
                     </div>
                     <br/>
-                    <p>Select any movie you want to edit or delete</p>
+                    {props.crud &&
+                        <p>Select any movie you want to edit or delete</p>
+                    }
                     <div className="contenedor">
                         {movies.map((movie, index ) => {
                             if(props.crud){
