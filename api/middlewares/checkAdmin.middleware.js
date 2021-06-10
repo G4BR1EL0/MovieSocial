@@ -5,7 +5,8 @@ dotenv.config();
 
 const adminAuth = async (req, res, next) => {
     const info = jwt.decode(req.headers.token);
-    if(info.role === 'admin'){
+    console.log(info, "qwertyyyyyyyyyyyyyyyyyyyyyyyyyy");
+    if(info.respuesta.admin){
         next();
     }else{
         res.status(401).send('No eres administrador');
