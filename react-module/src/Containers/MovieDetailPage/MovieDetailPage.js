@@ -32,7 +32,7 @@ const MovieDetailPage = () => {
                 <LargeButton action={valorate} text="Add valoration"/>
             </div>
             }
-            <DivisionTitle text="Users valorations"/>
+            <DivisionTitle text="Users valuations"/>
             <ValorationsBox movie={movie._id} userId={null}/>
         </div>
     )

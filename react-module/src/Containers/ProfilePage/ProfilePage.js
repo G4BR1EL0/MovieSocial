@@ -9,7 +9,7 @@ const ProfilePage = () => {
     return(
         <div>
             <Profile user={user}/>
-            <DivisionTitle text="My valorations"/>
+            <DivisionTitle text="My valuations"/>
             <ValorationsBox userId={user._id}/>
         </div>
            
