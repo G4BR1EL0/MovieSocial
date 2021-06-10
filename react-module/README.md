@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Front-end Module of Movie Social
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
