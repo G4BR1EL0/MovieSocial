@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './ValorationCard.scss';
 import { valorationAction } from '../../Store/Actions/valorationAction.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router";
 import ApiConsumer from "../../Util/ApiConsumer";
 import LargeButton from "../LargeButton/LargeButton";
@@ -9,6 +9,8 @@ import { movieAction } from '../../Store/Actions/movieActions.js';
 import StarRatingComponent from 'react-star-rating-component';
 
 const ValorationCard = (props) => {
+    const token = useSelector(state => state.token);
+
     let [editable, setEditable] = useState(props.valoration? true : false);
     const dispatch = useDispatch();
     const history = useHistory();
@@ -19,7 +21,8 @@ const ValorationCard = (props) => {
     }
     const deleteValoration =  async (valoration) => {
         if(window.confirm('Are you sure want to delete Valoration?')){
-            let respuesta = await ApiConsumer.deleteValoration(valoration._id);
+            console.log(valoration);
+            let respuesta = await ApiConsumer.deleteValoration(valoration._id, token.jwt);
             if(respuesta){
                 console.log(respuesta);
                 props.recharge();

@@ -1,34 +1,36 @@
 version: '3'
-
 services:
-  mongo:
-    container_name: mongodatabase
-    image: mongo
-    ports:
-      - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-  
-  mongo-express:
-    container_name: monog-express
-    image: mongo-express
+  frontend:
+    container_name: frontendapp
+    build:
+      context: ./react-module
+      dockerfile: Dockerfile
+    stdin_open: true
     restart: always
     ports:
-      - 8081:8081
+      - "3000:3000"
+    networks:
+      - moviesocial
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: root
-
+      - REACT_APP_APIURL=http://localhost:5000
+    depends_on: 
+      - web
   web:
     container_name: apiapp
-    # restart: always
+    restart: always
     build: 
         context: ./api
         dockerfile: Dockerfile
     ports:
       - "5000:3000"
-    links:
-      - mongo
+    environment:
+      - DBNAME=mongodb+srv://root:root@cluster0.l8l09.mongodb.net/moviesocial?retryWrites=true&w=majority
+      - PORT=3000
+      - JWT_TOKEN=herg897qwerty654321
     volumes: 
       - ./api:/api
+    networks:
+        - moviesocial
+networks: 
+  moviesocial:
+      driver: bridge
