@@ -22,7 +22,7 @@ Then it's necessary to go to `/` folder and to run
 
 `docker compose up`
 
-Finally in a diferent console go to `/react-module` folder and run
+Finally in a different console go to `/react-module` folder and run
 
 `npm start`
 
