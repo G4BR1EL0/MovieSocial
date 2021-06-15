@@ -22,13 +22,6 @@ Then it's necessary to go to `/` folder and to run
 
 `docker compose up`
 
-Finally in a different console go to `/react-module` folder and run
-
-`npm start`
-
-![image](https://user-images.githubusercontent.com/75450403/122040601-4c336a00-cdd8-11eb-9aca-75d20904b11a.png)
-
-
 The project should be up and running, to install the seed of the project write `/seed` at the end of the url and press USESEED
 
 ![image](https://user-images.githubusercontent.com/75450403/122040263-e21ac500-cdd7-11eb-953a-d4678f71a2f7.png)
