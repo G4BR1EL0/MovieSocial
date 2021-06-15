@@ -12,3 +12,27 @@ To see the back-end module repository click [HERE](https://github.com/G4BR1EL0/M
 This project has been deployed, the react module is at AWS with the amplify service, click [HERE](https://main.d2sbnupanjk8no.amplifyapp.com). to visit.
 
 The Api is deployed at Heroku, fetch `https://socialcinema-api.herokuapp.com` to communicate with the API. The database is hosted at Mongo Atlas.
+
+### Use off the project
+To run this project locally it is necessary to clone the whole project ant to run
+
+`npm install`
+
+Then it's necessary to go to `/` folder and to run
+
+`docker compose up`
+
+Finally in a different console go to `/react-module` folder and run
+
+`npm start`
+
+![image](https://user-images.githubusercontent.com/75450403/122040601-4c336a00-cdd8-11eb-9aca-75d20904b11a.png)
+
+
+The project should be up and running, to install the seed of the project write `/seed` at the end of the url and press USESEED
+
+![image](https://user-images.githubusercontent.com/75450403/122040263-e21ac500-cdd7-11eb-953a-d4678f71a2f7.png)
+
+The credentials of the dummy users are { email : user@mail.com, password : user}, {email: admin@mail.com, password : admin}
+
+      

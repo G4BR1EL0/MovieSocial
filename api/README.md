@@ -10,9 +10,8 @@ To begin to use this project the first step is to run
 
 Although this API is deploy in Heruku with a database hosted at Mongo Atlas, it was developed locally with a Docker compose image. To begin the application it's necessary to have installed docker plugin at the IDE. For more information click [HERE](https://www.docker.com).
 
-To start the application run:
 
-### `docker compose up`
+The steps to follow for running the application locally are collected [HERE](https://github.com/G4BR1EL0/MovieSocial) at the global repository Readme
 
 ## EndPoints
 
