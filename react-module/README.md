@@ -14,9 +14,7 @@ To begin to use this project the first step is to run
 
 ### `npm install`
 
-Then to begin the application the Back-end module must be up and running, To see the back-end module repository click [HERE](https://github.com/G4BR1EL0/MovieSocial/tree/main/api). If the Api is running locally the app can start with the command :
-
-### `npm start`
+The steps to follow for running the application locally are collected [HERE](https://github.com/G4BR1EL0/MovieSocial) at the global repository Readme
 
 ## Features
 
